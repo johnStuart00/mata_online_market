@@ -38,9 +38,14 @@ dependencies:
   #localization for changing language auto
   flutter_localizations:
     sdk: flutter
+  #a version specification for internationalization and localization
   intl: ^0.19.0
   #for changing themes immediatly
   adaptive_theme: ^3.6.0
+  #getx for state management
+  get: ^4.6.6
+  #Introduction Screen widget
+  introduction_screen: ^3.1.14
 
 dev_dependencies:
   flutter_test:

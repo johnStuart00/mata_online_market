@@ -1,0 +1,28 @@
+1. Ýönekeý we düşnükli
+Gysga: "Täze matalaryň dünýäsi – indi barysy elýeter!"
+Giňişleýin: "Täze matalaryň dünýäsi sizi garşylaýar! Hiline we gözelligine kepil geçilýän matalar indi barysy elýeter we öýüňizden çykman sargyt edip bilersiňiz."
+Gysga: "Her öýe we her toý çäresine laýyk matalar!"
+Giňişleýin: "Türkmenleriň ýaşaýyş durmuşyna we toý däplerine laýyk matalar bilen size hyzmat edýäris. Öýüňiz ýa-da toý çäresi üçin islendik zerurlygy bu ýerden taparsyňyz!"
+Gysga: "Hil we gözellik – indi diňe bir ädim uzaklykda!"
+Giňişleýin: "Hil we gözellik indi size has ýakyn! Onlaýn marketimizden öz islegleriňize laýyk matalary tapyp, bir ädimde sargyt edip bilersiňiz."
+2. Söwda we amatlylyk bilen bagly
+Gysga: "Arzan bahalar bilen matalar indi online!"
+Giňişleýin: "Hil we arzan bahalaryň bilelikde hödürlenýän matalaryny indi internet arkaly aňsatlyk bilen sargyt edip bilersiňiz."
+Gysga: "Hil we amatly bahalar bilelikde!"
+Giňişleýin: "Müşderilerimiziň isleglerini kanagatlandyrmak üçin, hil taýdan ýokary bolan matalary amatly bahalardan hödürleýäris."
+Gysga: "Matalaryň iň gowusy – öýden çykman!"
+Giňişleýin: "Öýüňizden çykman, Türkmenistanda elýeterli iň ýokary hilli matalarymyzy sargyt edip bilersiňiz. Size amatly we çalt hyzmat hödürleýäris!"
+3. Türkmen halkyna mahsus toý we däp-dessurlar bilen bagly
+Gysga: "Her toýuň lybasy bu ýerde başlanýar!"
+Giňişleýin: "Toý we baýramçylyk çäreleriňiz üçin gerek bolan ähli matalary hödürleýäris. Her lybas, her nagyş – indi size elýeter."
+Gysga: "Türkmen matalarynyň özboluşly gözelligi."
+Giňişleýin: "Milli mirasymyzyň bir bölegi bolan türkmen matalarynyň özboluşly nagyşlaryny we görnüşlerini size hödürleýäris. Her mata özboluşly many we gözellik getirýär."
+Gysga: "Toý sadakasy ýa-da gündelik durmuş – hemme zat üçin laýyk matalar!"
+Giňişleýin: "Toý sadakalary ýa-da gündelik durmuş üçin gerek bolan ähli matalaryny taparsyňyz. Islendik çärä laýyk görnüşler we reňkler elýeter."
+4. Gyzgyn we müşderini özüne çekýän stil
+Gysga: "Öz stiliňi tap – indi matalaryň täze mümkinçilikleri!"
+Giňişleýin: "Matalarymyz arkaly özboluşly stil dörediň. Ýokary hilli we giň görnüşler bilen arzuwlaryňyzy amala aşyryň."
+Gysga: "Arzuwyň matasy indi seniň eliňde!"
+Giňişleýin: "Arzuwlaryňyza laýyk mata tapmak indi aňsat! Matalarymyzyň dürli görnüşleri bilen her bir islegiňizi kanagatlandyrýarys."
+Gysga: "Gözellik we hil – matalaryň online dükany."
+Giňişleýin: "Hil we gözellik bilen baýlaşdyrylan matalarymyz internet dükanymyzda elýeter. Islegiňize görä iň amatly sargyt mümkinçiliklerini hödürleýäris."

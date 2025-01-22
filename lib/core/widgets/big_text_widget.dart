@@ -1,14 +1,19 @@
 import 'package:flutter/material.dart';
+import 'package:mata_online_market/core/constants/app_color.dart';
 
-class BigTextWidget {
-  String text;
+class BigTextWidget extends StatelessWidget {
+  final String text;
 
-  BigTextWidget({required this.text});
+  const BigTextWidget({super.key, required this.text});
 
-  Widget build() {
+  @override
+  Widget build(BuildContext context) {
     return Text(
       text,
-      //style: TextStyle(fontSize: 30),
+      style: const TextStyle(
+        fontSize: 30,
+        color: AppColors.whiteThemeText,
+      ),
     );
   }
 }
