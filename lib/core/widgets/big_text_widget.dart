@@ -10,9 +10,9 @@ class BigTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: 30,
-        color: AppColors.whiteThemeText,
+      style: TextStyle(
+        fontSize: 25,
+        color: Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );
   }

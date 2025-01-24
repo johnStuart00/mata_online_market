@@ -9,9 +9,9 @@ class SmallTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
+      style: TextStyle(
         fontSize: 12,
-        color: AppColors.whiteThemeText,
+        color: Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );
   }

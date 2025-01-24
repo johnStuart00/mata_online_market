@@ -8,9 +8,8 @@ class AppThemes {
     primaryColor: AppColors.whiteThemeContainer,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.whiteThemeText),
-      bodyMedium: TextStyle(color: AppColors.whiteThemeText),
     ),
-    iconTheme: const IconThemeData(color: AppColors.whiteThemeIcon),
+    iconTheme: const IconThemeData(color: AppColors.whiteThemeText),
     appBarTheme: const AppBarTheme(
       backgroundColor: AppColors.whiteThemeContainer,
       iconTheme: IconThemeData(color: AppColors.whiteThemeIcon),
@@ -31,7 +30,6 @@ class AppThemes {
     primaryColor: AppColors.darkThemeContainer,
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.darkThemeText),
-      bodyMedium: TextStyle(color: AppColors.darkThemeText),
     ),
     iconTheme: const IconThemeData(color: AppColors.darkThemeIcon),
     appBarTheme: const AppBarTheme(

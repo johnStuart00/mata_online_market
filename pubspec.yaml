@@ -46,6 +46,8 @@ dependencies:
   get: ^4.6.6
   #Introduction Screen widget
   introduction_screen: ^3.1.14
+  #SharedPreferences local storage
+  shared_preferences: ^2.4.0
 
 dev_dependencies:
   flutter_test:

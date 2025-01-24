@@ -1,6 +1,8 @@
 // There I will define all the app images
-class AssetsImages {
+class AssetsPath {
   static const String _imagesPath = 'assets/images';
+  static const String _iconsPath = 'assets/icons';
 
-  //final String welcomeImage = '$_imagesPath/welcome.png';
+  final String tkmIcon = '$_iconsPath/tkm.png';
+  final String rusIcon = '$_iconsPath/rus.png';
 }

@@ -9,9 +9,9 @@ class MiddleTextWidget extends StatelessWidget {
   Widget build(BuildContext context) {
     return Text(
       text,
-      style: const TextStyle(
-        fontSize: 20,
-        color: AppColors.whiteThemeText,
+      style: TextStyle(
+        fontSize: 18,
+        color: Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );
   }

@@ -1,12 +1,16 @@
 // introduction_screen
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
+import 'package:mata_online_market/core/assets/app_images.dart';
 import 'package:mata_online_market/core/constants/app_color.dart';
 import 'package:mata_online_market/core/constants/app_dimension.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
 import 'package:mata_online_market/main.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class IntroductionsScreen extends StatefulWidget {
   const IntroductionsScreen({super.key});
@@ -17,25 +21,119 @@ class IntroductionsScreen extends StatefulWidget {
 
 class IntroductionsScreenState extends State<IntroductionsScreen> {
   final introKey = GlobalKey<IntroductionsScreenState>();
+  final assetsPath = AssetsPath();
+  String selectedLanguage = 'Türkmen';
+  bool _autoScrollEnabled = false;
 
-  void _onIntroEnd(context) {
-    Navigator.of(context).pushReplacement(
-      MaterialPageRoute(builder: (_) => const MyHomePage()),
-    );
-  }
-
-  // Widget _buildFullscreenImage() {
-  //   return Image.asset(
-  //     'assets/fullscreen.jpg',
-  //     fit: BoxFit.cover,
-  //     height: double.infinity,
-  //     width: double.infinity,
-  //     alignment: Alignment.center,
-  //   );
+  // Widget _buildImage(String assetName, [double width = 350]) {
+  //   return Image.asset('assets/$assetName', width: width);
   // }
 
-  Widget _buildImage(String assetName, [double width = 350]) {
-    return Image.asset('assets/$assetName', width: width);
+  void _onIntroEnd(context) async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    await prefs.setBool('hasSeenIntro', true);
+
+    Get.offAll(() => const MyHomePage());
+  }
+
+  Future<void> _checkIfIntroSeen() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    bool hasSeenIntro = prefs.getBool('hasSeenIntro') ?? false;
+
+    if (hasSeenIntro) {
+      Get.offAll(() => const MyHomePage());
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _loadLanguage();
+    _checkIfIntroSeen();
+  }
+
+  Future<void> _loadLanguage() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    selectedLanguage = prefs.getString('selectedLanguage') ?? 'Türkmen';
+    if (prefs.getBool('isLanguageSelected') ?? true) {
+      _showLanguageSelectionDialog();
+    } else {
+      _setAppLocale(selectedLanguage);
+    }
+  }
+
+  void _setAppLocale(String language) {
+    Locale locale;
+    if (language == 'Türkmen') {
+      locale = const Locale('tr');
+    } else {
+      locale = const Locale('ru');
+    }
+    Get.updateLocale(locale);
+  }
+
+  Future<void> _showLanguageSelectionDialog() async {
+    List<String> languages = ['Türkmen', 'Русский'];
+    int selectedIndex = 0;
+
+    await showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          title: const MiddleTextWidget(text: 'Dil saýlaň / Выберите язык'),
+          content: SizedBox(
+            height: 150,
+            child: ListWheelScrollView(
+              itemExtent: 50,
+              perspective: 0.01,
+              diameterRatio: 2.5,
+              onSelectedItemChanged: (index) {
+                selectedIndex = index;
+              },
+              children: languages.asMap().entries.map((entry) {
+                int index = entry.key;
+                String lang = entry.value;
+                String iconPath =
+                    index == 0 ? assetsPath.tkmIcon : assetsPath.rusIcon;
+                return Center(
+                    child: Row(
+                  children: [
+                    Image.asset(iconPath),
+                    const SizedBox(width: 10),
+                    MiddleTextWidget(text: lang),
+                  ],
+                ));
+              }).toList(),
+            ),
+          ),
+          actions: [
+            TextButton(
+              onPressed: () async {
+                SharedPreferences prefs = await SharedPreferences.getInstance();
+                prefs.setBool('isLanguageSelected', true);
+                prefs.setString('selectedLanguage', languages[selectedIndex]);
+
+                setState(() {
+                  selectedLanguage = languages[selectedIndex];
+                  _setAppLocale(selectedLanguage);
+                  _autoScrollEnabled = true;
+                });
+
+                Get.back();
+
+                Get.snackbar(
+                  AppLocalizations.of(context)!.dilSaylandy,
+                  '${AppLocalizations.of(context)!.dilSaylandy} ${languages[selectedIndex]}',
+                  snackPosition: SnackPosition.BOTTOM,
+                );
+              },
+              child: const MiddleTextWidget(text: 'OK'),
+            ),
+          ],
+        );
+      },
+    );
   }
 
   @override
@@ -57,43 +155,38 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
       globalBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       allowImplicitScrolling: true,
       autoScrollDuration: 5000,
-      infiniteAutoScroll: false,
-      globalHeader: Align(
+      infiniteAutoScroll: _autoScrollEnabled,
+      globalHeader: const Align(
         alignment: Alignment.topRight,
         child: SafeArea(
           child: Padding(
             padding: AppSpacing.screenPadding,
-            child: _buildImage('flutter.png', 100),
+            //child: _buildImage('flutter.png', 100),
           ),
         ),
       ),
       pages: [
         PageViewModel(
-          title: "Täze matalaryň dünýäsi – indi barysy elýeter!",
-          body:
-              "Täze matalaryň dünýäsi sizi garşylaýar! Hiline we gözelligine kepil geçilýän matalar indi barysy elýeter we öýüňizden çykman sargyt edip bilersiňiz.",
-          image: _buildImage('img1.jpg'),
+          title: AppLocalizations.of(context)!.tazeMatalarDunyasi,
+          body: AppLocalizations.of(context)!.tazeMatalarDunyasiTitle,
+          //image: _buildImage('img1.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Hil we amatly bahalar bilelikde!",
-          body:
-              "Müşderilerimiziň isleglerini kanagatlandyrmak üçin, hil taýdan ýokary bolan matalary amatly bahalardan hödürleýäris.",
-          image: _buildImage('img2.jpg'),
+          title: AppLocalizations.of(context)!.hilWeAmatlyBaha,
+          body: AppLocalizations.of(context)!.hilWeAmatlyBahaTitle,
+          //image: _buildImage('img2.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title:
-              "Toý sadakasy ýa-da gündelik durmuş – hemme zat üçin laýyk matalar!",
-          body:
-              "Toý sadakalary ýa-da gündelik durmuş üçin gerek bolan ähli matalaryny taparsyňyz. Islendik çärä laýyk görnüşler we reňkler elýeter.",
-          image: _buildImage('img3.jpg'),
+          title: AppLocalizations.of(context)!.toySadakaYadaGundelikDurmus,
+          body: AppLocalizations.of(context)!.toySadakaYadaGundelikDurmusTitle,
+          //image: _buildImage('img3.jpg'),
           decoration: pageDecoration,
         ),
         PageViewModel(
-          title: "Öz stiliňi tap – indi matalaryň täze mümkinçilikleri!",
-          body:
-              "Matalarymyz arkaly özboluşly stil dörediň. Ýokary hilli we giň görnüşler bilen arzuwlaryňyzy amala aşyryň.",
+          title: AppLocalizations.of(context)!.ozStiliniTap,
+          body: AppLocalizations.of(context)!.ozStiliniTapTitle,
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
@@ -109,16 +202,11 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
       skipOrBackFlex: 0,
       nextFlex: 0,
       showBackButton: false,
-      back: const Icon(
-        AppIcons.arrowBack,
-        color: AppColors.whiteThemeText,
-      ),
-      skip: const MiddleTextWidget(text: 'Skip'),
-      next: const Icon(
-        AppIcons.arrowForword,
-        color: AppColors.whiteThemeText,
-      ),
-      done: const MiddleTextWidget(text: 'Done'),
+      back: Icon(AppIcons.arrowBack, color: Theme.of(context).iconTheme.color),
+      skip: MiddleTextWidget(text: AppLocalizations.of(context)!.gec),
+      next:
+          Icon(AppIcons.arrowForword, color: Theme.of(context).iconTheme.color),
+      done: MiddleTextWidget(text: AppLocalizations.of(context)!.tamam),
       curve: Curves.fastLinearToSlowEaseIn,
       controlsMargin: AppSpacing.cardPadding,
       dotsDecorator: const DotsDecorator(
