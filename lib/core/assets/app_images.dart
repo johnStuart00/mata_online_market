@@ -1,6 +1,6 @@
 // There I will define all the app images
 class AssetsPath {
-  static const String _imagesPath = 'assets/images';
+  //static const String _imagesPath = 'assets/images';
   static const String _iconsPath = 'assets/icons';
 
   final String tkmIcon = '$_iconsPath/tkm.png';

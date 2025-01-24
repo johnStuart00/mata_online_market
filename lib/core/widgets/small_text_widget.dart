@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:mata_online_market/core/constants/app_color.dart';
 
 class SmallTextWidget extends StatelessWidget {
   final String text;
