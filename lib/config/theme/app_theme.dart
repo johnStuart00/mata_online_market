@@ -5,7 +5,7 @@ class AppThemes {
   static final ThemeData lightTheme = ThemeData(
     brightness: Brightness.light,
     scaffoldBackgroundColor: AppColors.whiteThemeBack,
-    primaryColor: AppColors.whiteThemeContainer,
+    primaryColor: const Color.fromRGBO(132, 155, 129, 1),
     textTheme: const TextTheme(
       bodyLarge: TextStyle(color: AppColors.whiteThemeText),
     ),
@@ -22,6 +22,7 @@ class AppThemes {
     cardColor: AppColors.whiteThemeContainer,
     buttonTheme:
         const ButtonThemeData(buttonColor: AppColors.whiteThemeContainer),
+    shadowColor: Colors.black.withOpacity(0.1), // Add shadow color here
   );
 
   static final ThemeData darkTheme = ThemeData(
@@ -44,5 +45,6 @@ class AppThemes {
     cardColor: AppColors.darkThemeContainer,
     buttonTheme:
         const ButtonThemeData(buttonColor: AppColors.darkThemeContainer),
+    shadowColor: Colors.white.withOpacity(0.1), // Add shadow color here
   );
 }

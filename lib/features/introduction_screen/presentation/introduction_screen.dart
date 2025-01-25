@@ -8,7 +8,7 @@ import 'package:mata_online_market/core/constants/app_color.dart';
 import 'package:mata_online_market/core/constants/app_dimension.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
-import 'package:mata_online_market/features/home_page/presentation/home_page.dart';
+import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 

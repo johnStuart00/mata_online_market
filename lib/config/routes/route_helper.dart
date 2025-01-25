@@ -1,6 +1,6 @@
 // there I will have a static method called onGenerateRoute that will return a MaterialPageRoute.
 import 'package:get/get.dart';
-import 'package:mata_online_market/features/home_page/presentation/home_page.dart';
+import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:mata_online_market/features/introduction_screen/presentation/introduction_screen.dart';
 
 class RouteHelper {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:get/get_navigation/get_navigation.dart';
 import 'package:mata_online_market/config/theme/app_theme.dart';
-import 'package:mata_online_market/core/navigation/route_helper.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();

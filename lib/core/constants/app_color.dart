@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 
 class AppColors {
   static const whiteThemeBack = Color.fromRGBO(249, 246, 230, 1);
-  static const whiteThemeContainer = Color.fromRGBO(186, 216, 182, 1);
+  static const whiteThemeContainer = Color.fromRGBO(132, 155, 129, 1);
   static const whiteThemeIcon = Color.fromRGBO(141, 119, 171, 1);
   static const whiteThemeText = Color.fromRGBO(33, 53, 85, 1);
   static const darkThemeBack = Color.fromRGBO(33, 53, 85, 1);
