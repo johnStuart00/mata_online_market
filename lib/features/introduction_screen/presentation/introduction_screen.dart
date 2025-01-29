@@ -1,4 +1,5 @@
 // introduction_screen
+// ignore_for_file: use_build_context_synchronously
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:introduction_screen/introduction_screen.dart';
@@ -125,7 +126,7 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
                 Get.snackbar(
                   AppLocalizations.of(context)!.dilSaylandy,
                   '${AppLocalizations.of(context)!.dilSaylandy} ${languages[selectedIndex]}',
-                  snackPosition: SnackPosition.BOTTOM,
+                  snackPosition: SnackPosition.TOP,
                 );
               },
               child: const MiddleTextWidget(text: 'OK'),

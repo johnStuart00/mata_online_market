@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 class AppSpacing {
   // Padding
   static const EdgeInsets screenPadding = EdgeInsets.all(16.0);
+  static const EdgeInsets widgetHorizontalPadding =
+      EdgeInsets.symmetric(horizontal: 16.0);
   static const EdgeInsets cardPadding =
       EdgeInsets.symmetric(horizontal: 12.0, vertical: 8.0);
 

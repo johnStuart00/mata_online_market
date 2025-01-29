@@ -36,7 +36,8 @@ class _MyHomePageState extends State<MyHomePage> {
         height: 130,
         width: double.infinity,
         child: DotNavigationBar(
-          backgroundColor: Theme.of(context).cardColor,
+          backgroundColor:
+              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
           currentIndex: _SelectedTab.values.indexOf(_selectedTab),
           dotIndicatorColor: Theme.of(context).iconTheme.color,
           unselectedItemColor: Colors.grey[300],

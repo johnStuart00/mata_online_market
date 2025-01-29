@@ -8,4 +8,8 @@ class AppIcons {
   static const IconData likes = Icons.favorite_rounded;
   static const IconData shopCard = Icons.shopping_cart_rounded;
   static const IconData user = Icons.person_rounded;
+  static const IconData search = Icons.search_rounded;
+  // static const IconData voice = Icons.keyboard_voice_outlined;
+  static const IconData sort = Icons.sort_rounded;
+  static const IconData notifications = Icons.notifications;
 }

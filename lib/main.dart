@@ -22,11 +22,13 @@ class _MyAppState extends State<MyApp> {
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       light: AppThemes.lightTheme,
-      dark: AppThemes.darkTheme,
-      initial: AdaptiveThemeMode.system,
+      //dark: AppThemes.darkTheme,
+      initial: AdaptiveThemeMode.light,
       builder: (theme, darkTheme) => GetMaterialApp(
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
+        theme: theme,
+        //darkTheme: darkTheme,
         initialRoute: RouteHelper.getIntroductionScreen(),
         getPages: RouteHelper.routes,
       ),
