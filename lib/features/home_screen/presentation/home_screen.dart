@@ -2,6 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
+import 'package:mata_online_market/core/widgets/circle_container_widget.dart';
+import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
 import 'package:mata_online_market/core/widgets/small_text_widget.dart';
 import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
@@ -30,8 +32,58 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverToBoxAdapter(
             child: _SearchField(),
           ),
+          SliverToBoxAdapter(child: SizedBox(height: 10)),
+          SliverToBoxAdapter(
+            child: _CategoryField(),
+          ),
+          SliverToBoxAdapter(child: SizedBox(height: 10)),
         ],
       ),
+    );
+  }
+}
+
+class _CategoryField extends StatelessWidget {
+  const _CategoryField();
+
+  @override
+  Widget build(BuildContext context) {
+    return Column(
+      children: [
+        Padding(
+          padding: AppSpacing.widgetHorizontalPadding,
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            crossAxisAlignment: CrossAxisAlignment.end,
+            children: [
+              SmallTextWidget(
+                  text: AppLocalizations.of(context)!.ahliKategoriyalar),
+              GestureDetector(
+                  onTap: () {},
+                  child: MarkTextWidget(
+                      text: AppLocalizations.of(context)!.hemmesi)),
+            ],
+          ),
+        ),
+        const SizedBox(height: 5),
+        Padding(
+          padding: AppSpacing.widgetOnlyLeftPadding,
+          child: SizedBox(
+            height: 90,
+            child: ListView.builder(
+              scrollDirection: Axis.horizontal,
+              itemCount: 10,
+              itemBuilder: (context, index) {
+                return CircleContainerWidget(
+                  imageUrl:
+                      "https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw",
+                  categoryName: "Category $index",
+                );
+              },
+            ),
+          ),
+        ),
+      ],
     );
   }
 }
