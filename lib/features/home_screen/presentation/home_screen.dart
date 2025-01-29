@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
+import 'package:mata_online_market/core/widgets/banner_widget.dart';
 import 'package:mata_online_market/core/widgets/circle_container_widget.dart';
 import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
@@ -37,6 +38,36 @@ class _HomeScreenState extends State<HomeScreen> {
             child: _CategoryField(),
           ),
           SliverToBoxAdapter(child: SizedBox(height: 10)),
+          SliverToBoxAdapter(
+            child: _BannerField(),
+          )
+        ],
+      ),
+    );
+  }
+}
+
+class _BannerField extends StatelessWidget {
+  const _BannerField();
+
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 200,
+      child: Column(
+        children: [
+          Padding(
+            padding: AppSpacing.widgetHorizontalPadding,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.end,
+              children: [
+                SmallTextWidget(text: AppLocalizations.of(context)!.banner),
+              ],
+            ),
+          ),
+          const SizedBox(height: 5),
+          const BannerWidget()
         ],
       ),
     );

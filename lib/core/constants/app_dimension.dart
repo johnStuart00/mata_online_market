@@ -1,11 +1,11 @@
 //There  I will define all the app dimensions (height, width, size)
-import 'dart:ui';
+import 'package:flutter/material.dart';
 
 class AppDimensions {
-  static const double buttonHeight = 48.0;
-  static const double buttonWidth = 120.0;
-  static const double cardHeight = 200.0;
-  static const double cardWidth = 150.0;
+  static Size screenWidth80(BuildContext context) {
+    return Size(MediaQuery.of(context).size.width * 0.8,
+        MediaQuery.of(context).size.height);
+  }
 
   //dots decorate dots size
   static const Size dotsSize = Size(10.0, 10.0);
