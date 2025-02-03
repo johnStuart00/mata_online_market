@@ -22,6 +22,7 @@ class AppThemes {
       cardColor: AppColors.whiteThemeContainer,
       buttonTheme:
           const ButtonThemeData(buttonColor: AppColors.whiteThemeContainer),
+      // ignore: deprecated_member_use
       shadowColor: Colors.black.withOpacity(0.1),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.white) // Add shadow color here
@@ -47,6 +48,7 @@ class AppThemes {
       cardColor: AppColors.darkThemeContainer,
       buttonTheme:
           const ButtonThemeData(buttonColor: AppColors.darkThemeContainer),
+      // ignore: deprecated_member_use
       shadowColor: Colors.white.withOpacity(0.1),
       bottomNavigationBarTheme: const BottomNavigationBarThemeData(
           backgroundColor: AppColors.dark) // Add shadow color here

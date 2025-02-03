@@ -45,6 +45,7 @@ class _MyHomePageState extends State<MyHomePage> {
           splashBorderRadius: 50,
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Theme.of(context).shadowColor.withOpacity(0.3),
               blurRadius: 8,
               spreadRadius: 0.5,
