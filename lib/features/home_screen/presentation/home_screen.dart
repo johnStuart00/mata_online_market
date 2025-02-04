@@ -6,6 +6,7 @@ import 'package:mata_online_market/core/widgets/banner_widget.dart';
 import 'package:mata_online_market/core/widgets/circle_container_widget.dart';
 import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 import 'package:mata_online_market/core/widgets/small_text_widget.dart';
 import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -79,72 +80,10 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  Positioned(
+                  const Positioned(
                     top: 35.0,
                     left: 20.0,
-                    child: Container(
-                      height: 255,
-                      width: 160,
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
-                      ),
-                      child: Column(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Expanded(
-                            flex: 2,
-                            child: Container(
-                              decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(10)),
-                                image: DecorationImage(
-                                  fit: BoxFit.cover,
-                                  image: NetworkImage(
-                                      'https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw'),
-                                ),
-                              ),
-                              child: const Column(
-                                mainAxisAlignment: MainAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      Text('-2000 TMT'),
-                                      Text('Icon'),
-                                    ],
-                                  ),
-                                  Row(
-                                    mainAxisAlignment: MainAxisAlignment.end,
-                                    children: [Text('basget')],
-                                  )
-                                ],
-                              ),
-                            ),
-                          ),
-                          const Expanded(
-                            flex: 1,
-                            child: Column(
-                              mainAxisAlignment: MainAxisAlignment.center,
-                              crossAxisAlignment: CrossAxisAlignment.center,
-                              children: [
-                                MiddleTextWidget(text: "Product name"),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.center,
-                                  crossAxisAlignment: CrossAxisAlignment.center,
-                                  children: [
-                                    MiddleTextWidget(text: "Old price"),
-                                    MiddleTextWidget(text: 'New price')
-                                  ],
-                                )
-                              ],
-                            ),
-                          )
-                        ],
-                      ),
-                    ),
+                    child: ProductContainerWidget(),
                   )
                 ],
               ),

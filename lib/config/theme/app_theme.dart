@@ -7,8 +7,8 @@ class AppThemes {
       scaffoldBackgroundColor: AppColors.whiteThemeBack,
       primaryColor: AppColors.whiteThemeContainer,
       textTheme: const TextTheme(
-        bodyLarge: TextStyle(color: AppColors.whiteThemeText),
-      ),
+          bodyLarge: TextStyle(color: AppColors.whiteThemeText),
+          bodyMedium: TextStyle(color: AppColors.whiteThemeBack)),
       iconTheme: const IconThemeData(color: AppColors.whiteThemeIcon),
       appBarTheme: const AppBarTheme(
         backgroundColor: AppColors.whiteThemeBack,
@@ -19,7 +19,7 @@ class AppThemes {
           fontWeight: FontWeight.bold,
         ),
       ),
-      cardColor: AppColors.whiteThemeContainer,
+      cardColor: const Color.fromARGB(185, 132, 155, 129),
       buttonTheme:
           const ButtonThemeData(buttonColor: AppColors.whiteThemeContainer),
       // ignore: deprecated_member_use
@@ -34,6 +34,7 @@ class AppThemes {
       primaryColor: AppColors.darkThemeContainer,
       textTheme: const TextTheme(
         bodyLarge: TextStyle(color: AppColors.darkThemeText),
+        bodyMedium: TextStyle(color: AppColors.darkThemeBack),
       ),
       iconTheme: const IconThemeData(color: AppColors.darkThemeIcon),
       appBarTheme: const AppBarTheme(
