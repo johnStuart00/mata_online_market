@@ -9,7 +9,7 @@ class MiddleTextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 18,
+        fontSize: 16,
         color: Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );

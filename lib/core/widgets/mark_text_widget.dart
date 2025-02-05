@@ -9,7 +9,7 @@ class MarkTextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 9,
+        fontSize: 12,
         color: Theme.of(context).iconTheme.color,
       ),
     );

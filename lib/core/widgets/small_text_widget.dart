@@ -9,7 +9,7 @@ class SmallTextWidget extends StatelessWidget {
     return Text(
       text,
       style: TextStyle(
-        fontSize: 12,
+        fontSize: 14,
         color: Theme.of(context).textTheme.bodyLarge?.color,
       ),
     );

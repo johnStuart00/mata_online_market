@@ -12,6 +12,8 @@ class AppIcons {
   // static const IconData voice = Icons.keyboard_voice_outlined;
   static const IconData sort = Icons.sort_rounded;
   static const IconData notifications = Icons.notifications;
-  static const IconData unliked = Icons.favorite;
-  static const IconData liked = Icons.favorite_rounded;
+  static const IconData liked = Icons.favorite;
+  static const IconData unliked = Icons.favorite_border;
+  static const IconData basket = Icons.shopping_cart;
+  static const IconData unbasket = Icons.shopping_cart_outlined;
 }

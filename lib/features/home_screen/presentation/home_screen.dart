@@ -54,7 +54,7 @@ class _HomeScreenState extends State<HomeScreen> {
           //Aksiya field start
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 400,
+              height: 280,
               child: Stack(
                 children: [
                   Container(
@@ -80,10 +80,23 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                   ),
-                  const Positioned(
+                  Positioned(
                     top: 35.0,
                     left: 20.0,
-                    child: ProductContainerWidget(),
+                    right: 0.0,
+                    child: SizedBox(
+                      height: 250,
+                      child: ListView.builder(
+                        scrollDirection: Axis.horizontal,
+                        itemCount: 10,
+                        itemBuilder: (context, index) {
+                          return const Padding(
+                            padding: AppSpacing.smallPadding,
+                            child: ProductContainerWidget(),
+                          );
+                        },
+                      ),
+                    ),
                   )
                 ],
               ),

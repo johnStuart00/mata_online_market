@@ -13,8 +13,8 @@ class ProductContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 255,
-      width: 160,
+      height: 235,
+      width: 165,
       decoration: const BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -41,13 +41,17 @@ class ProductContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _DiscountWidget(),
-                      _IconWidget(),
+                      _IconWidget(
+                        icon: AppIcons.unliked,
+                      ),
                     ],
                   ),
                   Row(
                     mainAxisAlignment: MainAxisAlignment.end,
                     children: [
-                      Text('basget'),
+                      _IconWidget(
+                        icon: AppIcons.unbasket,
+                      )
                     ],
                   )
                 ],
@@ -81,8 +85,9 @@ class ProductContainerWidget extends StatelessWidget {
 }
 
 class _IconWidget extends StatelessWidget {
+  final IconData icon;
   const _IconWidget({
-    super.key,
+    required this.icon,
   });
 
   @override
@@ -100,8 +105,8 @@ class _IconWidget extends StatelessWidget {
             Radius.circular(10),
           ),
         ),
-        child: const Icon(
-          AppIcons.liked,
+        child: Icon(
+          icon,
           size: 18,
         ), //AppIcons.unliked
       ),
