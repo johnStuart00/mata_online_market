@@ -41,37 +41,41 @@ class _MyHomePageState extends State<MyHomePage> {
             bottom: 50,
             left: 0,
             right: 0,
-            child: DotNavigationBar(
-              backgroundColor:
-                  Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-              currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-              dotIndicatorColor: Theme.of(context).iconTheme.color,
-              unselectedItemColor: Colors.grey[300],
-              selectedItemColor: Theme.of(context).iconTheme.color,
-              splashBorderRadius: 50,
-              boxShadow: [
-                BoxShadow(
-                  color: Theme.of(context).shadowColor.withOpacity(0.3),
-                  blurRadius: 8,
-                  spreadRadius: 0.5,
-                  offset: const Offset(0, 2),
-                ),
-              ],
-              onTap: _handleIndexChanged,
-              items: [
-                DotNavigationBarItem(
-                  icon: const Icon(AppIcons.home),
-                ),
-                DotNavigationBarItem(
-                  icon: const Icon(AppIcons.shopCard),
-                ),
-                DotNavigationBarItem(
-                  icon: const Icon(AppIcons.likes),
-                ),
-                DotNavigationBarItem(
-                  icon: const Icon(AppIcons.user),
-                ),
-              ],
+            child: SizedBox(
+              width: double.infinity,
+              height: 125,
+              child: DotNavigationBar(
+                backgroundColor:
+                    Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+                currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+                dotIndicatorColor: Theme.of(context).iconTheme.color,
+                unselectedItemColor: Colors.grey[300],
+                selectedItemColor: Theme.of(context).iconTheme.color,
+                splashBorderRadius: 50,
+                boxShadow: [
+                  BoxShadow(
+                    color: Theme.of(context).shadowColor.withOpacity(0.3),
+                    blurRadius: 8,
+                    spreadRadius: 0.5,
+                    offset: const Offset(0, 2),
+                  ),
+                ],
+                onTap: _handleIndexChanged,
+                items: [
+                  DotNavigationBarItem(
+                    icon: const Icon(AppIcons.home),
+                  ),
+                  DotNavigationBarItem(
+                    icon: const Icon(AppIcons.shopCard),
+                  ),
+                  DotNavigationBarItem(
+                    icon: const Icon(AppIcons.likes),
+                  ),
+                  DotNavigationBarItem(
+                    icon: const Icon(AppIcons.user),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
