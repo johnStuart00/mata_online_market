@@ -60,14 +60,14 @@ class _MyHomePageState extends State<MyHomePage> {
               icon: const Icon(AppIcons.home),
             ),
 
+            /// Shop
+            DotNavigationBarItem(
+              icon: const Icon(AppIcons.shopCard),
+            ),
+
             /// Likes
             DotNavigationBarItem(
               icon: const Icon(AppIcons.likes),
-            ),
-
-            /// Search
-            DotNavigationBarItem(
-              icon: const Icon(AppIcons.shopCard),
             ),
 
             /// Profile

@@ -160,6 +160,75 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
           //New products field end
+          //All product field start
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          SliverToBoxAdapter(
+            child: Padding(
+              padding: AppSpacing.widgetHorizontalPadding,
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  MiddleTextWidget(
+                    text: AppLocalizations.of(context)!.hemmesi,
+                  ),
+                  Container(
+                    padding: EdgeInsets.all(8.0),
+                    decoration: BoxDecoration(
+                      color: Theme.of(context)
+                          .bottomNavigationBarTheme
+                          .backgroundColor
+                          // ignore: deprecated_member_use
+                          ?.withOpacity(0.7),
+                      borderRadius: const BorderRadius.all(
+                        Radius.circular(10),
+                      ),
+                      border: Border.all(
+                        color: Theme.of(context).iconTheme.color!,
+                        width: 1.0,
+                      ),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Theme.of(context).shadowColor.withOpacity(0.1),
+                          blurRadius: 3.0,
+                          spreadRadius: 0.5,
+                          offset: const Offset(0, 1),
+                        ),
+                      ],
+                    ),
+                    child: GestureDetector(
+                      onTap: () {},
+                      child: const Icon(
+                        AppIcons.sort,
+                        size: 18,
+                      ),
+                    ), //AppIcons.unliked
+                  ),
+                ],
+              ),
+            ),
+          ),
+          SliverPadding(
+            padding: const EdgeInsets.all(10.0),
+            sliver: SliverGrid(
+              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: 10.0,
+                mainAxisSpacing: 10.0,
+              ),
+              delegate: SliverChildBuilderDelegate(
+                (context, index) {
+                  return const Padding(
+                    padding: AppSpacing.smallPadding,
+                    child: ProductContainerWidget(),
+                  );
+                },
+                childCount: 10,
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          //All product field end
         ],
       ),
     );
