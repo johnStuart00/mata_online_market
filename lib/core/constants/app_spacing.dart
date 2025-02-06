@@ -16,7 +16,8 @@ class AppSpacing {
   static const EdgeInsets sectionMargin = EdgeInsets.symmetric(vertical: 16.0);
 
   //Radius
-  static const BorderRadius cardRadius = BorderRadius.all(Radius.circular(8.0));
+  static const BorderRadius cardRadius =
+      BorderRadius.all(Radius.circular(20.0));
   static const BorderRadius dotsRadius =
       BorderRadius.all(Radius.circular(25.0));
 }

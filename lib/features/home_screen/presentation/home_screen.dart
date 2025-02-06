@@ -6,6 +6,7 @@ import 'package:mata_online_market/core/widgets/banner_widget.dart';
 import 'package:mata_online_market/core/widgets/circle_container_widget.dart';
 import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/new_products_container_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 import 'package:mata_online_market/core/widgets/small_text_widget.dart';
 import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
@@ -19,6 +20,10 @@ class HomeScreen extends StatefulWidget {
 }
 
 class _HomeScreenState extends State<HomeScreen> {
+  static const String backDiscountImagePath = "assets/images/back_discount.png";
+  static const String backNewProductImagePath =
+      "assets/images/back_new_products.png";
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -54,14 +59,17 @@ class _HomeScreenState extends State<HomeScreen> {
           //Aksiya field start
           SliverToBoxAdapter(
             child: SizedBox(
-              height: 280,
+              height: 290,
               child: Stack(
                 children: [
                   Container(
                     height: 180,
-                    decoration: BoxDecoration(
-                      color: Colors.amber[300],
-                      borderRadius: const BorderRadius.all(Radius.circular(10)),
+                    decoration: const BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      image: DecorationImage(
+                        fit: BoxFit.cover,
+                        image: AssetImage(backDiscountImagePath),
+                      ),
                     ),
                   ),
                   Padding(
@@ -72,7 +80,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       children: [
                         SmallTextWidget(
                             text: AppLocalizations.of(context)!
-                                .ahliKategoriyalar),
+                                .aksiyadakyHarytlar),
                         GestureDetector(
                             onTap: () {},
                             child: MarkTextWidget(
@@ -82,7 +90,7 @@ class _HomeScreenState extends State<HomeScreen> {
                   ),
                   Positioned(
                     top: 35.0,
-                    left: 20.0,
+                    left: 0.0,
                     right: 0.0,
                     child: SizedBox(
                       height: 250,
@@ -104,6 +112,54 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
           //Aksiya field end
+          //New products field start
+          SliverToBoxAdapter(
+            child: Container(
+              height: 240,
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.all(Radius.circular(10)),
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(backNewProductImagePath),
+                ),
+              ),
+              child: Column(
+                children: [
+                  Padding(
+                    padding: AppSpacing.cardPadding,
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      crossAxisAlignment: CrossAxisAlignment.end,
+                      children: [
+                        SmallTextWidget(
+                            text: AppLocalizations.of(context)!
+                                .tazeGelenHarytlar),
+                        GestureDetector(
+                            onTap: () {},
+                            child: MarkTextWidget(
+                                text: AppLocalizations.of(context)!.hemmesi)),
+                      ],
+                    ),
+                  ),
+                  SizedBox(
+                    height: 200,
+                    child: ListView.builder(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: 10,
+                      itemBuilder: (context, index) {
+                        return const Padding(
+                          padding: AppSpacing.smallPadding,
+                          child: NewProductsWidget(),
+                        );
+                      },
+                    ),
+                  ),
+                ],
+              ),
+            ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          //New products field end
         ],
       ),
     );
