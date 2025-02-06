@@ -19,63 +19,62 @@ class _MyHomePageState extends State<MyHomePage> {
     });
   }
 
-  @override
   Widget build(BuildContext context) {
     return Scaffold(
       backgroundColor: Theme.of(context).scaffoldBackgroundColor,
-      body: IndexedStack(
-        index: _SelectedTab.values.indexOf(_selectedTab),
-        children: const [
-          HomeScreen(),
-          Center(child: Text('Favorite Page')),
-          Center(child: Text('Shop Card Page')),
-          Center(child: Text('Profile Page')),
+      body: Stack(
+        children: [
+          Positioned.fill(
+            child: IndexedStack(
+              index: _SelectedTab.values.indexOf(_selectedTab),
+              children: const [
+                HomeScreen(),
+                Center(child: Text('Favorite Page')),
+                Center(child: Text('Shop Card Page')),
+                Center(child: Text('Profile Page')),
+              ],
+            ),
+          ),
+
+          // DotNavigationBar floating at the bottom
+          Positioned(
+            bottom: 50,
+            left: 0,
+            right: 0,
+            child: DotNavigationBar(
+              backgroundColor:
+                  Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+              currentIndex: _SelectedTab.values.indexOf(_selectedTab),
+              dotIndicatorColor: Theme.of(context).iconTheme.color,
+              unselectedItemColor: Colors.grey[300],
+              selectedItemColor: Theme.of(context).iconTheme.color,
+              splashBorderRadius: 50,
+              boxShadow: [
+                BoxShadow(
+                  color: Theme.of(context).shadowColor.withOpacity(0.3),
+                  blurRadius: 8,
+                  spreadRadius: 0.5,
+                  offset: const Offset(0, 2),
+                ),
+              ],
+              onTap: _handleIndexChanged,
+              items: [
+                DotNavigationBarItem(
+                  icon: const Icon(AppIcons.home),
+                ),
+                DotNavigationBarItem(
+                  icon: const Icon(AppIcons.shopCard),
+                ),
+                DotNavigationBarItem(
+                  icon: const Icon(AppIcons.likes),
+                ),
+                DotNavigationBarItem(
+                  icon: const Icon(AppIcons.user),
+                ),
+              ],
+            ),
+          ),
         ],
-      ),
-      bottomNavigationBar: SizedBox(
-        height: 130,
-        width: double.infinity,
-        child: DotNavigationBar(
-          backgroundColor:
-              Theme.of(context).bottomNavigationBarTheme.backgroundColor,
-          currentIndex: _SelectedTab.values.indexOf(_selectedTab),
-          dotIndicatorColor: Theme.of(context).iconTheme.color,
-          unselectedItemColor: Colors.grey[300],
-          selectedItemColor: Theme.of(context).iconTheme.color,
-          splashBorderRadius: 50,
-          boxShadow: [
-            BoxShadow(
-              // ignore: deprecated_member_use
-              color: Theme.of(context).shadowColor.withOpacity(0.3),
-              blurRadius: 8,
-              spreadRadius: 0.5,
-              offset: const Offset(0, 2),
-            ),
-          ],
-          // enableFloatingNavBar: false,
-          onTap: _handleIndexChanged,
-          items: [
-            /// Home
-            DotNavigationBarItem(
-              icon: const Icon(AppIcons.home),
-            ),
-
-            /// Shop
-            DotNavigationBarItem(
-              icon: const Icon(AppIcons.shopCard),
-            ),
-
-            /// Likes
-            DotNavigationBarItem(
-              icon: const Icon(AppIcons.likes),
-            ),
-
-            /// Profile
-            DotNavigationBarItem(
-              icon: const Icon(AppIcons.user),
-            ),
-          ],
-        ),
       ),
     );
   }

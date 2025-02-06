@@ -211,8 +211,8 @@ class _HomeScreenState extends State<HomeScreen> {
           SliverPadding(
             padding: const EdgeInsets.all(10.0),
             sliver: SliverGrid(
-              gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                crossAxisCount: 2,
+              gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
+                maxCrossAxisExtent: 300.0,
                 crossAxisSpacing: 10.0,
                 mainAxisSpacing: 10.0,
               ),
@@ -223,7 +223,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     child: ProductContainerWidget(),
                   );
                 },
-                childCount: 10,
+                childCount: 50,
               ),
             ),
           ),
