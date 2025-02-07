@@ -44,27 +44,27 @@ dependencies:
   adaptive_theme: ^3.6.0
   #getx for state management
   get: ^4.6.6
-  #Introduction Screen widget
+  #Introduction Screen widget package
   introduction_screen: ^3.1.14
-  #SharedPreferences local storage
+  #SharedPreferences local storage package
   shared_preferences: ^2.4.0
-  #navigation bar for bottom
+  #navigation bar for bottom package
   dot_navigation_bar: ^1.0.2
-  #for carousel images slider
+  #for carousel images slider package
   carousel_slider: ^5.0.0
   smooth_page_indicator: ^1.2.0+3
-  #next package
+  #hive local storage package
+  hive: ^2.2.3
+  hive_flutter: ^1.1.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  # The "flutter_lints" package below contains a set of recommended lints to
-  # encourage good coding practices. The lint set provided by the package is
-  # activated in the `analysis_options.yaml` file located at the root of your
-  # package. See that file for information about deactivating specific lint
-  # rules and activating additional ones.
   flutter_lints: ^4.0.0
+  #hive loval storage package
+  hive_generator: ^1.1.2
+  build_runner: ^2.3.3
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

@@ -16,4 +16,5 @@ class AppIcons {
   static const IconData unliked = Icons.favorite_border;
   static const IconData basket = Icons.shopping_cart;
   static const IconData unbasket = Icons.shopping_cart_outlined;
+  static const IconData close = Icons.close;
 }

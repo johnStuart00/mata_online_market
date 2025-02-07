@@ -39,7 +39,7 @@ class _MyHomePageState extends State<MyHomePage> {
 
           // DotNavigationBar floating at the bottom
           Positioned(
-            bottom: 50,
+            bottom: 10,
             left: 0,
             right: 0,
             child: SizedBox(
