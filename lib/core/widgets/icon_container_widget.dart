@@ -25,6 +25,7 @@ class IconWidget extends StatelessWidget {
           ),
           boxShadow: [
             BoxShadow(
+              // ignore: deprecated_member_use
               color: Theme.of(context).shadowColor.withOpacity(0.1),
               blurRadius: 3.0,
               spreadRadius: 0.5,

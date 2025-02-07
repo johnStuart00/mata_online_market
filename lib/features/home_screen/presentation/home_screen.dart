@@ -9,7 +9,6 @@ import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
 import 'package:mata_online_market/core/widgets/new_products_container_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 import 'package:mata_online_market/core/widgets/small_text_widget.dart';
-import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -33,6 +32,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SliverAppBar(
             pinned: true,
             expandedHeight: 30,
+            automaticallyImplyLeading: false,
             flexibleSpace: FlexibleSpaceBar(
               title: _AppBarField(),
             ),
@@ -173,7 +173,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     text: AppLocalizations.of(context)!.hemmesi,
                   ),
                   Container(
-                    padding: EdgeInsets.all(8.0),
+                    padding: AppSpacing.smallPadding,
                     decoration: BoxDecoration(
                       color: Theme.of(context)
                           .bottomNavigationBarTheme
@@ -189,6 +189,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       ),
                       boxShadow: [
                         BoxShadow(
+                          // ignore: deprecated_member_use
                           color: Theme.of(context).shadowColor.withOpacity(0.1),
                           blurRadius: 3.0,
                           spreadRadius: 0.5,
@@ -346,7 +347,7 @@ class _SearchField extends StatelessWidget {
       padding: AppSpacing.widgetHorizontalPadding,
       child: GestureDetector(
           onTap: () {
-            Get.to(() => const SearchScreen());
+            Get.toNamed('/searchScreen');
           },
           child: Container(
             padding: AppSpacing.cardPadding,
