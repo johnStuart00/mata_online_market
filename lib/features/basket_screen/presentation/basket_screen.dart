@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
-import 'package:mata_online_market/core/widgets/product_container_widget.dart';
+import 'package:mata_online_market/core/widgets/basket_container_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class BasketScreen extends StatelessWidget {
@@ -40,9 +40,18 @@ class BasketScreen extends StatelessWidget {
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return const Padding(
+                        return Padding(
                           padding: AppSpacing.smallPadding,
-                          child: ProductContainerWidget(),
+                          child: BasketContainerWidget(
+                            imageUrl: 'assets/images/2.jpg',
+                            productName: products[index],
+                            productDescription: 'Product description',
+                            productPrice: 10.0,
+                            onDecreasePressed: () {},
+                            onIncreasePressed: () {},
+                            onLikePressed: () {},
+                            productQuantity: index + 1,
+                          ),
                         );
                       },
                       childCount: products.length,
