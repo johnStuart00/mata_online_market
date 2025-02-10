@@ -229,7 +229,7 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          const SliverToBoxAdapter(child: SizedBox(height: 100)),
           //All product field end
         ],
       ),
@@ -243,7 +243,7 @@ class _BannerField extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 200,
+      height: 240,
       child: Column(
         children: [
           Padding(

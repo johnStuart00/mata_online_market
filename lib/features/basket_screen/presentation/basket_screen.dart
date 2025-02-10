@@ -136,7 +136,7 @@ class _BasketContainerWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
                     MarkTextWidget(
-                        text: '\$${productPrice.toStringAsFixed(2)}'),
+                        text: '${productPrice.toStringAsFixed(2)} TMT'),
                     Row(
                       children: [
                         GestureDetector(
