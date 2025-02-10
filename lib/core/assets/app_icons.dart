@@ -17,4 +17,6 @@ class AppIcons {
   static const IconData basket = Icons.shopping_cart;
   static const IconData unbasket = Icons.shopping_cart_outlined;
   static const IconData close = Icons.close;
+  static const IconData remove = Icons.remove;
+  static const IconData add = Icons.add;
 }

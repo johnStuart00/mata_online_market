@@ -7,10 +7,10 @@ class SearchFieldWidget extends StatefulWidget {
   final TextEditingController searchController;
   final Function saveSearchQuery;
   const SearchFieldWidget({
-    Key? key,
+    super.key,
     required this.searchController,
     required this.saveSearchQuery,
-  }) : super(key: key);
+  });
 
   @override
   State<SearchFieldWidget> createState() => _SearchFieldWidgetState();

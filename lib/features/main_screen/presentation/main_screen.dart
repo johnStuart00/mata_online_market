@@ -32,9 +32,7 @@ class _MyHomePageState extends State<MyHomePage> {
               children: const [
                 HomeScreen(),
                 BasketScreen(
-                  products: [
-                    'product1',
-                  ],
+                  products: ['Product 1', 'Product 2', 'Product 3'],
                 ),
                 Center(child: Text('Shop Card Page')),
                 Center(child: Text('Profile Page')),

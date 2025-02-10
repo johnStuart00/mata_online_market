@@ -1,6 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
+import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
+import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/small_text_widget.dart';
 
 class BasketScreen extends StatelessWidget {
   final List<String> products;
@@ -11,14 +16,15 @@ class BasketScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       body: products.isEmpty
-          ? const CustomScrollView(
-              slivers: [
-                SliverToBoxAdapter(
-                  child: Center(
-                    child: Text('No products added to the basket.'),
-                  ),
-                )
-              ],
+          ? Center(
+              child: Padding(
+                padding: const EdgeInsets.all(16.0),
+                child: Text(
+                  'No products added to the basket.',
+                  style: Theme.of(context).textTheme.bodyLarge,
+                  textAlign: TextAlign.center,
+                ),
+              ),
             )
           : CustomScrollView(
               slivers: [
@@ -30,20 +36,14 @@ class BasketScreen extends StatelessWidget {
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(10.0),
-                  sliver: SliverGrid(
-                    gridDelegate:
-                        const SliverGridDelegateWithMaxCrossAxisExtent(
-                      maxCrossAxisExtent: 300.0,
-                      crossAxisSpacing: 10.0,
-                      mainAxisSpacing: 10.0,
-                    ),
+                  sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         return Padding(
                           padding: AppSpacing.smallPadding,
                           child: _BasketContainerWidget(
                             imageUrl: 'assets/images/2.jpg',
-                            productName: products[index],
+                            productName: 'Product name',
                             productDescription: 'Product description',
                             productPrice: 10.0,
                             onDecreasePressed: () {},
@@ -56,7 +56,7 @@ class BasketScreen extends StatelessWidget {
                       childCount: products.length,
                     ),
                   ),
-                ),
+                )
               ],
             ),
     );
@@ -87,75 +87,71 @@ class _BasketContainerWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      padding: const EdgeInsets.all(8.0),
-      margin: const EdgeInsets.symmetric(vertical: 4.0),
       decoration: BoxDecoration(
-        border: Border.all(color: Colors.grey),
-        borderRadius: BorderRadius.circular(8.0),
+        color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
+        borderRadius: AppSpacing.cardRadius,
+        boxShadow: [
+          BoxShadow(
+            // ignore: deprecated_member_use
+            color: Theme.of(context).shadowColor.withOpacity(0.3),
+            blurRadius: 5.0,
+            spreadRadius: 0.01,
+            offset: const Offset(0, 2),
+          ),
+        ],
       ),
       child: Row(
         children: [
-          Image.network(
-            imageUrl,
-            width: 80,
-            height: 80,
-            fit: BoxFit.cover,
+          Expanded(
+            flex: 1,
+            child: Container(
+              decoration: BoxDecoration(
+                borderRadius: AppSpacing.cardRadius,
+                image: DecorationImage(
+                  fit: BoxFit.cover,
+                  image: AssetImage(imageUrl),
+                ),
+              ),
+            ),
           ),
           const SizedBox(width: 8.0),
           Expanded(
+            flex: 2,
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.start,
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      productName,
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
-                    IconButton(
-                      icon: const Icon(Icons.favorite_border),
-                      onPressed: onLikePressed,
-                    ),
+                    MiddleTextWidget(text: productName),
+                    GestureDetector(
+                        onTap: () {},
+                        child: const IconWidget(icon: AppIcons.unliked)),
                   ],
                 ),
-                Text(
-                  productDescription,
-                  style: TextStyle(
-                    fontSize: 14.0,
-                    color: Colors.grey[600],
-                  ),
-                ),
+                MiddleTextWidget(text: productDescription),
                 const SizedBox(height: 8.0),
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    Text(
-                      '\$${productPrice.toStringAsFixed(2)}',
-                      style: const TextStyle(
-                        fontSize: 16.0,
-                        fontWeight: FontWeight.bold,
-                      ),
-                    ),
+                    MarkTextWidget(
+                        text: '\$${productPrice.toStringAsFixed(2)}'),
                     Row(
                       children: [
-                        IconButton(
-                          icon: const Icon(Icons.remove),
-                          onPressed: onDecreasePressed,
+                        GestureDetector(
+                            onTap: () {
+                              onDecreasePressed();
+                            },
+                            child: const IconWidget(icon: AppIcons.remove)),
+                        SmallTextWidget(
+                          text: productQuantity.toString(),
                         ),
-                        Text(
-                          productQuantity.toString(),
-                          style: const TextStyle(
-                            fontSize: 16.0,
-                          ),
-                        ),
-                        IconButton(
-                          icon: const Icon(Icons.add),
-                          onPressed: onIncreasePressed,
-                        ),
+                        GestureDetector(
+                            onTap: () {
+                              onIncreasePressed();
+                            },
+                            child: const IconWidget(icon: AppIcons.add))
                       ],
                     ),
                   ],
