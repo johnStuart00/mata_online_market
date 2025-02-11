@@ -2,6 +2,7 @@ import 'package:dot_navigation_bar/dot_navigation_bar.dart';
 import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/features/basket_screen/presentation/basket_screen.dart';
+import 'package:mata_online_market/features/favorites_screen/presentation/favorites_screen.dart';
 import 'package:mata_online_market/features/home_screen/presentation/home_screen.dart';
 
 class MyHomePage extends StatefulWidget {
@@ -34,7 +35,7 @@ class _MyHomePageState extends State<MyHomePage> {
                 BasketScreen(
                   products: ['Product 1', 'Product 2', 'Product 3'],
                 ),
-                Center(child: Text('Shop Card Page')),
+                FavoritesScreen(products: ['Product 1', 'Product 2']),
                 Center(child: Text('Profile Page')),
               ],
             ),
