@@ -33,7 +33,14 @@ class FavoritesScreen extends StatelessWidget {
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(10.0),
-                  sliver: SliverList(
+                  sliver: SliverGrid(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 300.0,
+                      mainAxisExtent: 245.0,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
+                    ),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
                         return const Padding(

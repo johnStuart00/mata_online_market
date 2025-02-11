@@ -35,7 +35,19 @@ class _MyHomePageState extends State<MyHomePage> {
                 BasketScreen(
                   products: ['Product 1', 'Product 2', 'Product 3'],
                 ),
-                FavoritesScreen(products: ['Product 1', 'Product 2']),
+                FavoritesScreen(products: [
+                  'Product 1',
+                  'Product 2',
+                  'Product 1',
+                  'Product 2',
+                  'Product 3',
+                  'Product 1',
+                  'Product 2',
+                  'Product 3',
+                  'Product 1',
+                  'Product 2',
+                  'Product 3'
+                ]),
                 Center(child: Text('Profile Page')),
               ],
             ),
