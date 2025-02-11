@@ -29,10 +29,11 @@ class BasketScreen extends StatelessWidget {
           : CustomScrollView(
               slivers: [
                 SliverAppBar(
-                  title: Text(AppLocalizations.of(context)!.sebedim),
                   floating: true,
                   snap: true,
                   centerTitle: true,
+                  automaticallyImplyLeading: false,
+                  title: Text(AppLocalizations.of(context)!.sebedim),
                 ),
                 SliverPadding(
                   padding: const EdgeInsets.all(10.0),
