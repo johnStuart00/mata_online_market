@@ -26,10 +26,6 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
   String selectedLanguage = 'Türkmen';
   bool _autoScrollEnabled = false;
 
-  // Widget _buildImage(String assetName, [double width = 350]) {
-  //   return Image.asset('assets/$assetName', width: width);
-  // }
-
   void _onIntroEnd(context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     await prefs.setBool('hasSeenIntro', true);
