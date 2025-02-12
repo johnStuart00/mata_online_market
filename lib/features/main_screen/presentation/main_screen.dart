@@ -4,6 +4,7 @@ import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/features/basket_screen/presentation/basket_screen.dart';
 import 'package:mata_online_market/features/favorites_screen/presentation/favorites_screen.dart';
 import 'package:mata_online_market/features/home_screen/presentation/home_screen.dart';
+import 'package:mata_online_market/features/profile_screen/presentation/profile_screen.dart';
 
 class MyHomePage extends StatefulWidget {
   const MyHomePage({super.key});
@@ -48,7 +49,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   'Product 2',
                   'Product 3'
                 ]),
-                Center(child: Text('Profile Page')),
+                ProfileScreen(),
               ],
             ),
           ),

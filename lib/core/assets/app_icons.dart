@@ -19,4 +19,15 @@ class AppIcons {
   static const IconData close = Icons.close;
   static const IconData remove = Icons.remove;
   static const IconData add = Icons.add;
+  static const IconData darkMode = Icons.dark_mode_outlined;
+  static const IconData bag = Icons.shopping_bag_outlined;
+  static const IconData location = Icons.location_on_outlined;
+  static const IconData keepInChat = Icons.chat_outlined;
+  static const IconData language = Icons.language_rounded;
+  static const IconData helpAndSupport = Icons.support_agent_rounded;
+  static const IconData securityPrivacy = Icons.security_outlined;
+  static const IconData conditions = Icons.edit_document;
+  static const IconData aboutUs = Icons.group_outlined;
+  static const IconData version = Icons.verified_outlined;
+  static const IconData singIn = Icons.door_back_door_outlined;
 }
