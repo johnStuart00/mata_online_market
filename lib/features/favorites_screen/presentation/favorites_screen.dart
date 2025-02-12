@@ -25,6 +25,7 @@ class FavoritesScreen extends StatelessWidget {
           : CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  pinned: true,
                   floating: true,
                   snap: true,
                   centerTitle: true,
@@ -50,7 +51,8 @@ class FavoritesScreen extends StatelessWidget {
                       childCount: products.length,
                     ),
                   ),
-                )
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 100)),
               ],
             ),
     );

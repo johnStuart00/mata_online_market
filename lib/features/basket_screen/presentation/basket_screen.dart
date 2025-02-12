@@ -29,6 +29,7 @@ class BasketScreen extends StatelessWidget {
           : CustomScrollView(
               slivers: [
                 SliverAppBar(
+                  pinned: true,
                   floating: true,
                   snap: true,
                   centerTitle: true,
@@ -57,7 +58,8 @@ class BasketScreen extends StatelessWidget {
                       childCount: products.length,
                     ),
                   ),
-                )
+                ),
+                const SliverToBoxAdapter(child: SizedBox(height: 100)),
               ],
             ),
     );
