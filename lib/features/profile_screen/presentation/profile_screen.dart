@@ -235,12 +235,12 @@ class _ThemeModeSwitcher extends StatefulWidget {
 class _ThemeModeSwitcherState extends State<_ThemeModeSwitcher> {
   @override
   Widget build(BuildContext context) {
-    // Get current theme mode
     bool isDark = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark;
 
     return Switch(
       value: isDark,
-      activeColor: Colors.red,
+      activeThumbImage: const AssetImage('assets/images/night.png'),
+      inactiveThumbImage: const AssetImage('assets/images/day.png'),
       onChanged: (bool value) {
         if (value) {
           AdaptiveTheme.of(context).setDark();
