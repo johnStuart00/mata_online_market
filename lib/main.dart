@@ -5,15 +5,22 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mata_online_market/config/theme/app_theme.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox<String>('searchHistory');
-  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  final savedThemeMode = await _loadThemeMode();
   runApp(OnlineMataMarket(
     savedThemeMode: savedThemeMode,
   ));
+}
+
+Future<AdaptiveThemeMode> _loadThemeMode() async {
+  SharedPreferences prefs = await SharedPreferences.getInstance();
+  bool isDark = prefs.getBool('isDark') ?? false;
+  return isDark ? AdaptiveThemeMode.dark : AdaptiveThemeMode.light;
 }
 
 class OnlineMataMarket extends StatefulWidget {
