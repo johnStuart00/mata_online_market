@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
+import 'package:mata_online_market/core/assets/app_images.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
@@ -239,8 +240,8 @@ class _ThemeModeSwitcherState extends State<_ThemeModeSwitcher> {
 
     return Switch(
       value: isDark,
-      activeThumbImage: const AssetImage('assets/images/night.png'),
-      inactiveThumbImage: const AssetImage('assets/images/day.png'),
+      activeThumbImage: AssetImage(AssetsPath().nightImagePath),
+      inactiveThumbImage: AssetImage(AssetsPath().dayImagePath),
       onChanged: (bool value) {
         if (value) {
           AdaptiveTheme.of(context).setDark();
