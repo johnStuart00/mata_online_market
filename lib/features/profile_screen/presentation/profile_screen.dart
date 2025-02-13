@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:adaptive_theme/adaptive_theme.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -15,62 +16,62 @@ class _ProfileScreenState extends State<ProfileScreen> {
     {
       'icon': AppIcons.darkMode,
       'text': 'Garaňky tema',
-      'value': '',
+      'value': _ThemeModeSwitcher(),
     },
     {
       'icon': AppIcons.bag,
       'text': 'Sargytlarym',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.user,
       'text': 'Profile',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.location,
       'text': 'Salgy',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.keepInChat,
       'text': 'Habarnama',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.language,
       'text': 'Dil',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.helpAndSupport,
       'text': 'Kömek we goldaw',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.securityPrivacy,
       'text': 'Gizlinlik syýasaty',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.conditions,
       'text': 'Şertler',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.aboutUs,
       'text': 'Biz barada',
-      'value': '',
+      'value': const SizedBox(),
     },
     {
       'icon': AppIcons.version,
       'text': 'Wersiýasy',
-      'value': '1.0',
+      'value': const MiddleTextWidget(text: '1.0'),
     },
     {
       'icon': AppIcons.singIn,
       'text': 'Hasaba gir',
-      'value': '',
+      'value': const SizedBox(),
     },
   ];
 
@@ -171,7 +172,7 @@ class _AppBarField extends StatelessWidget {
 class ProfileSettingItem extends StatelessWidget {
   final IconData icon;
   final String text;
-  final String value;
+  final Widget value;
 
   const ProfileSettingItem({
     super.key,
@@ -189,6 +190,7 @@ class ProfileSettingItem extends StatelessWidget {
         color: Theme.of(context)
             .bottomNavigationBarTheme
             .backgroundColor
+            // ignore: deprecated_member_use
             ?.withOpacity(0.7),
         borderRadius: BorderRadius.circular(10),
         border: Border.all(
@@ -197,6 +199,7 @@ class ProfileSettingItem extends StatelessWidget {
         ),
         boxShadow: [
           BoxShadow(
+            // ignore: deprecated_member_use
             color: Theme.of(context).shadowColor.withOpacity(0.1),
             blurRadius: 3.0,
             spreadRadius: 0.5,
@@ -213,13 +216,39 @@ class ProfileSettingItem extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.end,
               children: [
-                if (value.isNotEmpty) MiddleTextWidget(text: value),
+                value,
               ],
             ),
           ),
           const SizedBox(width: 5),
         ],
       ),
+    );
+  }
+}
+
+class _ThemeModeSwitcher extends StatefulWidget {
+  @override
+  State<_ThemeModeSwitcher> createState() => _ThemeModeSwitcherState();
+}
+
+class _ThemeModeSwitcherState extends State<_ThemeModeSwitcher> {
+  @override
+  Widget build(BuildContext context) {
+    // Get current theme mode
+    bool isDark = AdaptiveTheme.of(context).mode == AdaptiveThemeMode.dark;
+
+    return Switch(
+      value: isDark,
+      activeColor: Colors.red,
+      onChanged: (bool value) {
+        if (value) {
+          AdaptiveTheme.of(context).setDark();
+        } else {
+          AdaptiveTheme.of(context).setLight();
+        }
+        setState(() {});
+      },
     );
   }
 }

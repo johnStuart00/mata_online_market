@@ -10,29 +10,33 @@ Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
   await Hive.initFlutter();
   await Hive.openBox<String>('searchHistory');
-  runApp(const MyApp());
+  final savedThemeMode = await AdaptiveTheme.getThemeMode();
+  runApp(OnlineMataMarket(
+    savedThemeMode: savedThemeMode,
+  ));
 }
 
-class MyApp extends StatefulWidget {
-  const MyApp({super.key});
+class OnlineMataMarket extends StatefulWidget {
+  final AdaptiveThemeMode? savedThemeMode;
+  const OnlineMataMarket({super.key, this.savedThemeMode});
 
   @override
-  State<MyApp> createState() => _MyAppState();
+  State<OnlineMataMarket> createState() => _OnlineMataMarketState();
 }
 
-class _MyAppState extends State<MyApp> {
+class _OnlineMataMarketState extends State<OnlineMataMarket> {
   @override
   Widget build(BuildContext context) {
     return AdaptiveTheme(
       light: AppThemes.lightTheme,
-      //dark: AppThemes.darkTheme,
-      initial: AdaptiveThemeMode.light,
+      dark: AppThemes.darkTheme,
+      initial: widget.savedThemeMode ?? AdaptiveThemeMode.system,
       builder: (theme, darkTheme) => GetMaterialApp(
         //debugShowCheckedModeBanner: false,
         localizationsDelegates: AppLocalizations.localizationsDelegates,
         supportedLocales: AppLocalizations.supportedLocales,
         theme: theme,
-        //darkTheme: darkTheme,
+        darkTheme: darkTheme,
         initialRoute: RouteHelper.getIntroductionScreen(),
         getPages: RouteHelper.routes,
       ),
