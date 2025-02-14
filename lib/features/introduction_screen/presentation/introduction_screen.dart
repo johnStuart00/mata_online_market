@@ -135,11 +135,17 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
 
   @override
   Widget build(BuildContext context) {
-    const bodyStyle = TextStyle(fontSize: 19.0);
+    const bodyStyle = TextStyle(
+      fontSize: 19.0,
+      color: Colors.black,
+    );
 
     final pageDecoration = PageDecoration(
-      titleTextStyle:
-          const TextStyle(fontSize: 28.0, fontWeight: FontWeight.w700),
+      titleTextStyle: const TextStyle(
+        fontSize: 28.0,
+        fontWeight: FontWeight.w700,
+        color: Colors.black,
+      ),
       bodyTextStyle: bodyStyle,
       bodyPadding: AppSpacing.screenPadding,
       pageColor: Theme.of(context).scaffoldBackgroundColor,
