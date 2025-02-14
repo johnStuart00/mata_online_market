@@ -5,6 +5,7 @@ import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
+import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
   const ProfileScreen({super.key});
@@ -14,71 +15,70 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
-  final List<Map<String, dynamic>> profileSettings = [
-    {
-      'icon': AppIcons.darkMode,
-      'text': 'Garaňky tema',
-      'value': _ThemeModeSwitcher(),
-    },
-    {
-      'icon': AppIcons.bag,
-      'text': 'Sargytlarym',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.user,
-      'text': 'Profile',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.location,
-      'text': 'Salgy',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.keepInChat,
-      'text': 'Habarnama',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.language,
-      'text': 'Dil',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.helpAndSupport,
-      'text': 'Kömek we goldaw',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.securityPrivacy,
-      'text': 'Gizlinlik syýasaty',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.conditions,
-      'text': 'Şertler',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.aboutUs,
-      'text': 'Biz barada',
-      'value': const SizedBox(),
-    },
-    {
-      'icon': AppIcons.version,
-      'text': 'Wersiýasy',
-      'value': const MiddleTextWidget(text: '1.0'),
-    },
-    {
-      'icon': AppIcons.singIn,
-      'text': 'Hasaba gir',
-      'value': const SizedBox(),
-    },
-  ];
-
   @override
   Widget build(BuildContext context) {
+    final List<Map<String, dynamic>> profileSettings = [
+      {
+        'icon': AppIcons.darkMode,
+        'text': AppLocalizations.of(context)!.garankyTema,
+        'value': _ThemeModeSwitcher(),
+      },
+      {
+        'icon': AppIcons.bag,
+        'text': AppLocalizations.of(context)!.sargytlarym,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.user,
+        'text': AppLocalizations.of(context)!.prifile,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.location,
+        'text': AppLocalizations.of(context)!.salgy,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.keepInChat,
+        'text': AppLocalizations.of(context)!.habarnama,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.language,
+        'text': AppLocalizations.of(context)!.dil,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.helpAndSupport,
+        'text': AppLocalizations.of(context)!.komekWeGoldaw,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.securityPrivacy,
+        'text': AppLocalizations.of(context)!.gizlinlikSyyasaty,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.conditions,
+        'text': AppLocalizations.of(context)!.sertler,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.aboutUs,
+        'text': AppLocalizations.of(context)!.bizBarada,
+        'value': const SizedBox(),
+      },
+      {
+        'icon': AppIcons.version,
+        'text': AppLocalizations.of(context)!.wersiyasy,
+        'value': const MiddleTextWidget(text: '1.0'),
+      },
+      {
+        'icon': AppIcons.singIn,
+        'text': AppLocalizations.of(context)!.hasabaGir,
+        'value': const SizedBox(),
+      },
+    ];
     return Scaffold(
       body: CustomScrollView(
         slivers: [
