@@ -133,6 +133,10 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
     );
   }
 
+  Widget _buildImage(String assetName, [double width = 350]) {
+    return Image.asset('assets/images/$assetName', width: width);
+  }
+
   @override
   Widget build(BuildContext context) {
     const bodyStyle = TextStyle(
@@ -172,24 +176,31 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
         PageViewModel(
           title: AppLocalizations.of(context)!.tazeMatalarDunyasi,
           body: AppLocalizations.of(context)!.tazeMatalarDunyasiTitle,
-          //image: _buildImage('img1.jpg'),
+          image: _buildImage('intro1.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: AppLocalizations.of(context)!.hilWeAmatlyBaha,
           body: AppLocalizations.of(context)!.hilWeAmatlyBahaTitle,
-          //image: _buildImage('img2.jpg'),
-          decoration: pageDecoration,
+          image: _buildImage('intro2.png'),
+          decoration: pageDecoration.copyWith(
+            contentMargin: const EdgeInsets.symmetric(horizontal: 16),
+            fullScreen: true,
+            bodyFlex: 2,
+            imageFlex: 3,
+            safeArea: 100,
+          ),
         ),
         PageViewModel(
           title: AppLocalizations.of(context)!.toySadakaYadaGundelikDurmus,
           body: AppLocalizations.of(context)!.toySadakaYadaGundelikDurmusTitle,
-          //image: _buildImage('img3.jpg'),
+          image: _buildImage('intro3.png'),
           decoration: pageDecoration,
         ),
         PageViewModel(
           title: AppLocalizations.of(context)!.ozStiliniTap,
           body: AppLocalizations.of(context)!.ozStiliniTapTitle,
+          image: _buildImage('intro4.png'),
           decoration: pageDecoration.copyWith(
             contentMargin: const EdgeInsets.symmetric(horizontal: 16),
             fullScreen: true,
