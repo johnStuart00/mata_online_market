@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/banner_widget.dart';
@@ -295,10 +296,15 @@ class _CategoryField extends StatelessWidget {
               scrollDirection: Axis.horizontal,
               itemCount: 10,
               itemBuilder: (context, index) {
-                return CircleContainerWidget(
-                  imageUrl:
-                      "https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw",
-                  categoryName: "Category $index",
+                return GestureDetector(
+                  onTap: () {
+                    Get.toNamed(RouteHelper.categoryViewScreen);
+                  },
+                  child: CircleContainerWidget(
+                    imageUrl:
+                        "https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw",
+                    categoryName: "Category $index",
+                  ),
                 );
               },
             ),
@@ -348,7 +354,7 @@ class _SearchField extends StatelessWidget {
       padding: AppSpacing.widgetHorizontalPadding,
       child: GestureDetector(
           onTap: () {
-            Get.toNamed('/searchScreen');
+            Get.toNamed(RouteHelper.searchScreen);
           },
           child: Container(
             padding: AppSpacing.cardPadding,
