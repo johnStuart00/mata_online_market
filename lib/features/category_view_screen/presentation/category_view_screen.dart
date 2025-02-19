@@ -3,7 +3,6 @@ import 'package:get/get.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
-import 'package:collection/collection.dart';
 
 class CategoryViewScreen extends StatefulWidget {
   const CategoryViewScreen({super.key});
@@ -38,51 +37,12 @@ class _CategoryViewScreenState extends State<CategoryViewScreen> {
   }
 }
 
-const List<String> list = <String>['Ahlisi'];
-
-class DropdownMenuExample extends StatefulWidget {
-  const DropdownMenuExample({super.key});
-
+class _AppBarTitleField extends StatefulWidget {
   @override
-  State<DropdownMenuExample> createState() => _DropdownMenuExampleState();
+  State<_AppBarTitleField> createState() => _AppBarTitleFieldState();
 }
 
-typedef MenuEntry = DropdownMenuEntry<String>;
-
-class _DropdownMenuExampleState extends State<DropdownMenuExample> {
-  static final List<MenuEntry> menuEntries = UnmodifiableListView<MenuEntry>(
-    list.map<MenuEntry>((String name) => MenuEntry(value: name, label: name)),
-  );
-  String dropdownValue = list.first;
-
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: DropdownMenu<String>(
-        initialSelection: list.first,
-        onSelected: (String? value) {
-          setState(() {
-            dropdownValue = value!;
-          });
-        },
-        dropdownMenuEntries: menuEntries,
-        // menuStyle: MenuStyle(
-        //   padding: MaterialStateProperty.all<EdgeInsetsGeometry>(
-        //     EdgeInsets.zero, // Minimize padding
-        //   ),
-        //   surfaceTintColor: MaterialStateProperty.all(
-        //       Colors.transparent), // Remove background tint
-        //   elevation: MaterialStateProperty.all(0), // Remove shadow
-        //   side: MaterialStateProperty.all(BorderSide.none), // Remove border
-        // ),
-        textStyle: TextStyle(fontSize: 10),
-      ),
-    );
-  }
-}
-
-class _AppBarTitleField extends StatelessWidget {
+class _AppBarTitleFieldState extends State<_AppBarTitleField> {
   @override
   Widget build(BuildContext context) {
     return Row(
@@ -103,7 +63,24 @@ class _AppBarTitleField extends StatelessWidget {
           ],
         ),
         const SizedBox(width: 5),
-        const DropdownMenuExample(),
+        Expanded(
+          child: Row(
+            mainAxisAlignment: MainAxisAlignment.end,
+            children: [
+              DropdownButton(
+                items: const [
+                  DropdownMenuItem(
+                    child: MiddleTextWidget(text: 'Ahlisi'),
+                  ),
+                ],
+                onChanged: (value) {},
+                underline: Container(height: 0),
+                style: const TextStyle(fontSize: 15),
+              ),
+            ],
+          ),
+        ),
+        const SizedBox(width: 5),
       ],
     );
   }
@@ -117,10 +94,9 @@ class _AppBarField extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 3,
+          flex: 2,
           child: Container(
             width: MediaQuery.of(context).size.width,
-            height: 200,
             padding: AppSpacing.cardPadding,
             decoration: BoxDecoration(
               image: const DecorationImage(
