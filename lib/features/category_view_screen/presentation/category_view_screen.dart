@@ -2,7 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
+import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
 import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 
 class CategoryViewScreen extends StatefulWidget {
   const CategoryViewScreen({super.key});
@@ -12,6 +14,8 @@ class CategoryViewScreen extends StatefulWidget {
 }
 
 class _CategoryViewScreenState extends State<CategoryViewScreen> {
+  final List<String> products = [];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -32,9 +36,41 @@ class _CategoryViewScreenState extends State<CategoryViewScreen> {
           ),
           //AppBar field end
           //main field of the screen start
-          const SliverToBoxAdapter(child: SizedBox(height: 1000)),
+
+          products.isEmpty
+              //if products list empty
+              ? const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: EmptyPageWidget(),
+                )
+              // if products list not empty
+              : SliverPadding(
+                  padding: const EdgeInsets.all(10.0),
+                  sliver: SliverGrid(
+                    gridDelegate:
+                        const SliverGridDelegateWithMaxCrossAxisExtent(
+                      maxCrossAxisExtent: 300.0,
+                      mainAxisExtent: 245.0,
+                      crossAxisSpacing: 10.0,
+                      mainAxisSpacing: 10.0,
+                    ),
+                    delegate: SliverChildBuilderDelegate(
+                      (context, index) {
+                        return const Column(
+                          children: [
+                            Padding(
+                              padding: AppSpacing.smallPadding,
+                              child: ProductContainerWidget(),
+                            ),
+                            SliverToBoxAdapter(child: SizedBox(height: 100)),
+                          ],
+                        );
+                      },
+                      childCount: 50,
+                    ),
+                  ),
+                ),
           //main field of the screen end
-          const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
     );
