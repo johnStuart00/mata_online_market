@@ -19,17 +19,21 @@ class _CategoryViewScreenState extends State<CategoryViewScreen> {
         slivers: [
           //AppBar field start
           SliverAppBar(
+            bottom: PreferredSize(
+              preferredSize: const Size.fromHeight(0.0),
+              child: _AppBarTitleField(),
+            ),
             pinned: true,
-            automaticallyImplyLeading: false,
             expandedHeight: 250,
-            flexibleSpace: FlexibleSpaceBar(
-              background: const _AppBarField(),
-              title: _AppBarTitleField(),
+            flexibleSpace: const FlexibleSpaceBar(
+              background: _AppBarField(),
+              //title: _AppBarTitleField(),
             ),
           ),
-          const SliverToBoxAdapter(child: SizedBox(height: 1000)),
           //AppBar field end
-
+          //main field of the screen start
+          const SliverToBoxAdapter(child: SizedBox(height: 1000)),
+          //main field of the screen end
           const SliverToBoxAdapter(child: SizedBox(height: 100)),
         ],
       ),
@@ -94,7 +98,7 @@ class _AppBarField extends StatelessWidget {
     return Column(
       children: [
         Expanded(
-          flex: 2,
+          flex: 4,
           child: Container(
             width: MediaQuery.of(context).size.width,
             padding: AppSpacing.cardPadding,

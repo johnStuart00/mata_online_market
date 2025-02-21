@@ -1,4 +1,4 @@
-#Fri Feb 14 15:05:12 UZT 2025
+#Wed Feb 19 18:14:23 UZT 2025
 base.0=C\:\\Users\\admin\\Downloads\\mata_online_market\\android\\app\\build\\intermediates\\dex\\release\\minifyReleaseWithR8\\classes.dex
 path.0=classes.dex
 renamed.0=classes.dex
