@@ -12,4 +12,5 @@ class AssetsPath {
 
   final String emptyLottiePath = '$_lottiePath/empty.json';
   final String errorLottiePath = '$_lottiePath/error.json';
+  final String waitLottiePath = '$_lottiePath/wait.json';
 }
