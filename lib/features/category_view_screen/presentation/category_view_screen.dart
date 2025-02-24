@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
@@ -27,6 +28,7 @@ class _CategoryViewScreenState extends State<CategoryViewScreen> {
               preferredSize: const Size.fromHeight(0.0),
               child: _AppBarTitleField(),
             ),
+            automaticallyImplyLeading: false,
             pinned: true,
             expandedHeight: 250,
             flexibleSpace: const FlexibleSpaceBar(
@@ -91,7 +93,10 @@ class _AppBarTitleFieldState extends State<_AppBarTitleField> {
         const SizedBox(width: 5),
         GestureDetector(
           onTap: () {
-            Get.toNamed('/', preventDuplicates: true);
+            Get.toNamed(
+              RouteHelper.initialRoute,
+              preventDuplicates: true,
+            );
           },
           child: const Icon(AppIcons.arrowBack),
         ),

@@ -83,7 +83,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: AppLocalizations.of(context)!
                                 .aksiyadakyHarytlar),
                         GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(RouteHelper.categoryViewScreen);
+                            },
                             child: MarkTextWidget(
                                 text: AppLocalizations.of(context)!.hemmesi)),
                       ],
@@ -99,9 +101,13 @@ class _HomeScreenState extends State<HomeScreen> {
                         scrollDirection: Axis.horizontal,
                         itemCount: 10,
                         itemBuilder: (context, index) {
-                          return const Padding(
+                          return Padding(
                             padding: AppSpacing.smallPadding,
-                            child: ProductContainerWidget(),
+                            child: GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(RouteHelper.productViewScreen);
+                                },
+                                child: const ProductContainerWidget()),
                           );
                         },
                       ),
@@ -136,7 +142,9 @@ class _HomeScreenState extends State<HomeScreen> {
                             text: AppLocalizations.of(context)!
                                 .tazeGelenHarytlar),
                         GestureDetector(
-                            onTap: () {},
+                            onTap: () {
+                              Get.toNamed(RouteHelper.categoryViewScreen);
+                            },
                             child: MarkTextWidget(
                                 text: AppLocalizations.of(context)!.hemmesi)),
                       ],
@@ -148,9 +156,13 @@ class _HomeScreenState extends State<HomeScreen> {
                       scrollDirection: Axis.horizontal,
                       itemCount: 10,
                       itemBuilder: (context, index) {
-                        return const Padding(
+                        return Padding(
                           padding: AppSpacing.smallPadding,
-                          child: NewProductsWidget(),
+                          child: GestureDetector(
+                              onTap: () {
+                                Get.toNamed(RouteHelper.productViewScreen);
+                              },
+                              child: const NewProductsWidget()),
                         );
                       },
                     ),
@@ -170,8 +182,13 @@ class _HomeScreenState extends State<HomeScreen> {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  MiddleTextWidget(
-                    text: AppLocalizations.of(context)!.hemmesi,
+                  GestureDetector(
+                    onTap: () {
+                      Get.toNamed(RouteHelper.categoryViewScreen);
+                    },
+                    child: MiddleTextWidget(
+                      text: AppLocalizations.of(context)!.hemmesi,
+                    ),
                   ),
                   Container(
                     padding: AppSpacing.smallPadding,
@@ -199,7 +216,31 @@ class _HomeScreenState extends State<HomeScreen> {
                       ],
                     ),
                     child: GestureDetector(
-                      onTap: () {},
+                      onTapDown: (TapDownDetails details) {
+                        final RenderBox overlay = Overlay.of(context)
+                            .context
+                            .findRenderObject() as RenderBox;
+
+                        showMenu(
+                          context: context,
+                          position: RelativeRect.fromRect(
+                            details.globalPosition &
+                                const Size(40, 40), // Position of tap
+                            Offset.zero & overlay.size, // Screen size
+                          ),
+                          items: [
+                            const PopupMenuItem(
+                              value: 'Ahlisi',
+                              child: Text('Ahlisi'),
+                            ),
+                          ],
+                        ).then((value) {
+                          if (value != null) {
+                            // ignore: avoid_print
+                            print('Selected: $value');
+                          }
+                        });
+                      },
                       child: const Icon(
                         AppIcons.sort,
                         size: 18,
@@ -221,9 +262,13 @@ class _HomeScreenState extends State<HomeScreen> {
               ),
               delegate: SliverChildBuilderDelegate(
                 (context, index) {
-                  return const Padding(
+                  return Padding(
                     padding: AppSpacing.smallPadding,
-                    child: ProductContainerWidget(),
+                    child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(RouteHelper.productViewScreen);
+                        },
+                        child: const ProductContainerWidget()),
                   );
                 },
                 childCount: 50,
@@ -281,7 +326,9 @@ class _CategoryField extends StatelessWidget {
               SmallTextWidget(
                   text: AppLocalizations.of(context)!.ahliKategoriyalar),
               GestureDetector(
-                  onTap: () {},
+                  onTap: () {
+                    Get.toNamed(RouteHelper.categoryViewScreen);
+                  },
                   child: MarkTextWidget(
                       text: AppLocalizations.of(context)!.hemmesi)),
             ],

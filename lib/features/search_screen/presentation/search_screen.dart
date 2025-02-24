@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:hive_flutter/hive_flutter.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/search_field_widget.dart';
@@ -54,7 +55,10 @@ class _SearchScreenState extends State<SearchScreen> {
               IconButton(
                 icon: const Icon(AppIcons.close),
                 onPressed: () {
-                  Get.toNamed('/', preventDuplicates: true);
+                  Get.toNamed(
+                    RouteHelper.initialRoute,
+                    preventDuplicates: true,
+                  );
                 },
               ),
             ],
