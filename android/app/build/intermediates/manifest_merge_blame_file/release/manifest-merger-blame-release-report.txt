@@ -47,8 +47,8 @@
 34        android:extractNativeLibs="true"
 35        android:icon="@mipmap/ic_launcher"
 35-->C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:5:9-43
-36        android:label="mata_online_market" >
-36-->C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:3:9-43
+36        android:label="Sapa Mata" >
+36-->C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:3:9-34
 37        <activity
 37-->C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:6:9-27:20
 38            android:name="com.example.mata_online_market.MainActivity"

@@ -19,7 +19,7 @@ MERGED from [androidx.versionedparcelable:versionedparcelable:1.1.1] C:\Users\ad
 	android:appComponentFactory
 		ADDED from [androidx.core:core:1.13.1] C:\Users\admin\.gradle\caches\transforms-3\daa016f69f13885c7ebe1fbd9b243ba2\transformed\core-1.13.1\AndroidManifest.xml:28:18-86
 	android:label
-		ADDED from C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:3:9-43
+		ADDED from C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:3:9-34
 	android:icon
 		ADDED from C:\Users\admin\Downloads\mata_online_market\android\app\src\main\AndroidManifest.xml:5:9-43
 	android:name
