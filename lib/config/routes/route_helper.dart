@@ -1,4 +1,3 @@
-// there I will have a static method called onGenerateRoute that will return a MaterialPageRoute.
 import 'package:get/get.dart';
 import 'package:mata_online_market/core/widgets/product_view_screen.dart';
 import 'package:mata_online_market/features/category_view_screen/presentation/category_view_screen.dart';
@@ -41,8 +40,9 @@ class RouteHelper {
       transition: Transition.fadeIn,
     ),
     GetPage(
-        name: productViewScreen,
-        page: () => const ProductViewScreen(),
-        transition: Transition.fadeIn),
+      name: productViewScreen,
+      page: () => const ProductViewScreen(),
+      transition: Transition.fadeIn,
+    ),
   ];
 }

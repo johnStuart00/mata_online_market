@@ -5,6 +5,7 @@ import 'package:get/get_navigation/get_navigation.dart';
 import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mata_online_market/config/theme/app_theme.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
+import 'package:mata_online_market/features/error_screen/presentation/error_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 Future<void> main() async {
@@ -46,6 +47,11 @@ class _OnlineMataMarketState extends State<OnlineMataMarket> {
         darkTheme: darkTheme,
         initialRoute: RouteHelper.getIntroductionScreen(),
         getPages: RouteHelper.routes,
+        onGenerateRoute: (RouteSettings settings) {
+          return MaterialPageRoute<void>(builder: (context) {
+            return const ErrorPage();
+          });
+        },
       ),
     );
   }
