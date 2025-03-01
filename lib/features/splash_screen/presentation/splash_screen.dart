@@ -15,15 +15,15 @@ class SplashScreen extends StatefulWidget {
 }
 
 class _SplashScreenState extends State<SplashScreen> {
-  bool hasSeenIntro = false;
+  bool? hasSeenIntro;
 
   Future<void> _checkIfIntroSeen() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-    hasSeenIntro = prefs.getBool('hasSeenIntro') ?? false;
+    bool seen = prefs.getBool('hasSeenIntro') ?? false;
 
-    if (hasSeenIntro) {
-      Get.offAll(() => const MyHomePage());
-    }
+    setState(() {
+      hasSeenIntro = seen;
+    });
   }
 
   @override
@@ -36,12 +36,19 @@ class _SplashScreenState extends State<SplashScreen> {
 
   @override
   Widget build(BuildContext context) {
+    if (hasSeenIntro == null) {
+      return Scaffold(
+        backgroundColor: Theme.of(context).primaryColor,
+        body: const Center(child: CircularProgressIndicator()),
+      );
+    }
     return AnimatedSplashScreen(
       splash: const SplashWidget(),
       nextScreen:
-          hasSeenIntro ? const MyHomePage() : const IntroductionsScreen(),
-      animationDuration: const Duration(seconds: 1),
+          hasSeenIntro! ? const MyHomePage() : const IntroductionsScreen(),
+      animationDuration: const Duration(seconds: 5),
       splashIconSize: AppDimensions.screenHeight(context),
+      splashTransition: SplashTransition.fadeTransition,
       backgroundColor: Theme.of(context).primaryColor,
     );
   }
