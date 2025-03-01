@@ -33,20 +33,10 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
     Get.offAll(() => const MyHomePage());
   }
 
-  Future<void> _checkIfIntroSeen() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    bool hasSeenIntro = prefs.getBool('hasSeenIntro') ?? false;
-
-    if (hasSeenIntro) {
-      Get.offAll(() => const MyHomePage());
-    }
-  }
-
   @override
   void initState() {
     super.initState();
     _loadLanguage();
-    _checkIfIntroSeen();
   }
 
   Future<void> _loadLanguage() async {

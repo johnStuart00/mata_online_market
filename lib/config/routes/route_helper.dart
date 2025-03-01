@@ -4,10 +4,12 @@ import 'package:mata_online_market/features/category_view_screen/presentation/ca
 import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:mata_online_market/features/introduction_screen/presentation/introduction_screen.dart';
 import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
+import 'package:mata_online_market/features/splash_screen/presentation/splash_screen.dart';
 
 class RouteHelper {
   //Route names
   static const String initialRoute = '/';
+  static const String splashScreen = '/splashScreen';
   static const String introductionScreen = '/introductionScreen';
   static const String searchScreen = '/searchScreen';
   static const String categoryViewScreen = '/categoryViewScreen';
@@ -16,9 +18,15 @@ class RouteHelper {
   //Route path getters
   static String getInitialRoute() => initialRoute;
   static String getIntroductionScreen() => introductionScreen;
+  static String getSplashScreen() => splashScreen;
 
   //Routes list
   static List<GetPage> routes = [
+    GetPage(
+      name: splashScreen,
+      page: () => const SplashScreen(),
+      transition: Transition.fadeIn,
+    ),
     GetPage(
       name: initialRoute,
       page: () => const MyHomePage(),

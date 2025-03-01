@@ -45,7 +45,7 @@ class _OnlineMataMarketState extends State<OnlineMataMarket> {
         supportedLocales: AppLocalizations.supportedLocales,
         theme: theme,
         darkTheme: darkTheme,
-        initialRoute: RouteHelper.getIntroductionScreen(),
+        initialRoute: RouteHelper.splashScreen,
         getPages: RouteHelper.routes,
         onGenerateRoute: (RouteSettings settings) {
           return MaterialPageRoute<void>(builder: (context) {
