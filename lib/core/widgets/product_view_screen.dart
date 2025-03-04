@@ -52,11 +52,48 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
             ),
             //AppBar field end
             //main field of the screen start
+            //image corousel start
+            SliverToBoxAdapter(
+              child: SizedBox(
+                height: 300,
+                child: ImageCarouselScreen(),
+              ),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
+            //image corousel end
+            //product title start
             const SliverToBoxAdapter(
-                child: SizedBox(
-              height: 300,
-              child: ImageCarouselScreen(),
-            ))
+              child: MiddleTextWidget(text: 'Haryt ady'),
+            ),
+            const SliverToBoxAdapter(child: SizedBox(height: 10)),
+            SliverToBoxAdapter(
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  const MiddleTextWidget(text: 'Mukdary'),
+                  Container(
+                    height: 30,
+                    width: 100,
+                    decoration: BoxDecoration(
+                      color: Colors.grey.withOpacity(0.5),
+                      borderRadius: AppSpacing.cardRadius,
+                    ),
+                    child: const Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        MiddleTextWidget(text: '-'),
+                        SizedBox(width: 3),
+                        MiddleTextWidget(text: '1'),
+                        SizedBox(width: 3),
+                        MiddleTextWidget(text: '+'),
+                      ],
+                    ),
+                  )
+                ],
+              ),
+            )
+
+            //product title end
             //main field of the screen end
           ],
         ),
@@ -101,8 +138,6 @@ class _AppBarTitleFieldState extends State<_AppBarTitleField> {
 }
 
 class ImageCarouselScreen extends StatefulWidget {
-  const ImageCarouselScreen({super.key});
-
   @override
   State<ImageCarouselScreen> createState() => _ImageCarouselScreenState();
 }
@@ -170,7 +205,7 @@ class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
             Positioned(
               bottom: 0.0,
               right: AppDimensions.screenWidth(context) * 0.15,
-              child: const IconWidget(icon: AppIcons.liked),
+              child: const IconWidget(icon: AppIcons.unliked),
             ),
           ],
         ),
