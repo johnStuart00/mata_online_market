@@ -24,7 +24,6 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
   final introKey = GlobalKey<IntroductionsScreenState>();
   final assetsPath = AssetsPath();
   String selectedLanguage = 'Türkmen';
-  bool _autoScrollEnabled = false;
 
   void _onIntroEnd(context) async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
@@ -104,7 +103,6 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
                 setState(() {
                   selectedLanguage = languages[selectedIndex];
                   _setAppLocale(selectedLanguage);
-                  _autoScrollEnabled = true;
                 });
 
                 Get.back();
@@ -151,8 +149,6 @@ class IntroductionsScreenState extends State<IntroductionsScreen> {
       key: introKey,
       globalBackgroundColor: Theme.of(context).scaffoldBackgroundColor,
       allowImplicitScrolling: true,
-      autoScrollDuration: 5000,
-      infiniteAutoScroll: _autoScrollEnabled,
       globalHeader: const Align(
         alignment: Alignment.topRight,
         child: SafeArea(
