@@ -208,7 +208,7 @@ class _ImageCarouselScreenState extends State<ImageCarouselScreen> {
               items: imageUrls.map((url) {
                 return ClipRRect(
                   borderRadius: AppSpacing.cardRadius,
-                  child: Image.network(
+                  child: Image.asset(
                     url,
                     fit: BoxFit.cover,
                     width: 1000.0,
