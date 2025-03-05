@@ -4,7 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
-import 'package:mata_online_market/core/widgets/search_field_widget.dart';
+import 'package:mata_online_market/features/home_screen/widgets/search_field_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class SearchScreen extends StatefulWidget {

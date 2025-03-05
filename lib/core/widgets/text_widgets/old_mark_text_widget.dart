@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 
-class LineThroughTextWidget extends StatelessWidget {
+class OldMarkTextWidget extends StatelessWidget {
   final String text;
-  const LineThroughTextWidget({required this.text, super.key});
+  const OldMarkTextWidget({required this.text, super.key});
 
   @override
   Widget build(BuildContext context) {

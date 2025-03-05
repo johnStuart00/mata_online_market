@@ -3,13 +3,13 @@ import 'package:get/get.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
-import 'package:mata_online_market/core/widgets/banner_widget.dart';
-import 'package:mata_online_market/core/widgets/circle_container_widget.dart';
-import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
-import 'package:mata_online_market/core/widgets/new_products_container_widget.dart';
+import 'package:mata_online_market/features/home_screen/widgets/banner_widget.dart';
+import 'package:mata_online_market/features/home_screen/widgets/circle_container_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/mark_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
+import 'package:mata_online_market/features/home_screen/widgets/new_products_container_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
-import 'package:mata_online_market/core/widgets/small_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class HomeScreen extends StatefulWidget {

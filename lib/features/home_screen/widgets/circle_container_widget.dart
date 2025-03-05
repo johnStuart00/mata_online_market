@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mata_online_market/core/widgets/small_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 
 class CircleContainerWidget extends StatelessWidget {
   final String imageUrl;

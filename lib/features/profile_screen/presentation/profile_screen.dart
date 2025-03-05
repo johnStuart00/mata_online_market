@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/assets/app_images.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';

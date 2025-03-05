@@ -1,7 +1,7 @@
 import 'package:animated_splash_screen/animated_splash_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/constants/app_dimension.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 import 'package:mata_online_market/features/introduction_screen/presentation/introduction_screen.dart';
 import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:shared_preferences/shared_preferences.dart';

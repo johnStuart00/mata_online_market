@@ -2,9 +2,9 @@ import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
-import 'package:mata_online_market/core/widgets/line_through_text_widget.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
-import 'package:mata_online_market/core/widgets/small_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/old_mark_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 
 class ProductContainerWidget extends StatelessWidget {
   const ProductContainerWidget({
@@ -80,7 +80,7 @@ class ProductContainerWidget extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.center,
                   crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    LineThroughTextWidget(text: "Old price"),
+                    OldMarkTextWidget(text: "Old price"),
                     SizedBox(width: 5),
                     MiddleTextWidget(text: 'New price')
                   ],

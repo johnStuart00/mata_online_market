@@ -5,8 +5,10 @@ import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_dimension.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/big_text_widget.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/old_mark_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProductViewScreen extends StatefulWidget {
@@ -24,80 +26,112 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
     return Scaffold(
       body: Padding(
         padding: AppSpacing.smallPadding,
-        child: CustomScrollView(
-          slivers: [
-            //AppBar field start
-            SliverAppBar(
-              pinned: true,
-              centerTitle: true,
-              automaticallyImplyLeading: false,
-              title: MiddleTextWidget(
-                text: AppLocalizations.of(context)!.harytMaglumatlary,
-              ),
-              leading: GestureDetector(
+        child: CustomScrollView(slivers: [
+          //AppBar field start
+          SliverAppBar(
+            pinned: true,
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            title: MiddleTextWidget(
+              text: AppLocalizations.of(context)!.harytMaglumatlary,
+            ),
+            leading: GestureDetector(
+              onTap: () {
+                Get.back();
+              },
+              child: const Icon(AppIcons.arrowBack),
+            ),
+            actions: [
+              GestureDetector(
                 onTap: () {
                   Get.back();
                 },
-                child: const Icon(AppIcons.arrowBack),
+                child: const Icon(AppIcons.basket),
               ),
-              actions: [
-                GestureDetector(
-                  onTap: () {
-                    Get.back();
-                  },
-                  child: const Icon(AppIcons.basket),
-                ),
-                const SizedBox(width: 10),
+              const SizedBox(width: 10),
+            ],
+          ),
+          //AppBar field end
+          //main field of the screen start
+          //image corousel start
+          const SliverToBoxAdapter(
+            child: SizedBox(
+              height: 300,
+              child: ImageCarouselScreen(),
+            ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          //image corousel end
+          //product title start
+          const SliverToBoxAdapter(
+            child: BigTextWidget(text: 'Haryt ady'),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          const SliverToBoxAdapter(
+            child: _MukdaryField(),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          const SliverToBoxAdapter(
+            child: Row(
+              children: <Widget>[
+                OldMarkTextWidget(text: 'Köne baha'),
+                SizedBox(width: 3),
+                MiddleTextWidget(text: 'Täze baha'),
               ],
             ),
-            //AppBar field end
-            //main field of the screen start
-            //image corousel start
-            SliverToBoxAdapter(
-              child: SizedBox(
-                height: 300,
-                child: ImageCarouselScreen(),
-              ),
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 10)),
+          const SliverToBoxAdapter(
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.start,
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                BigTextWidget(text: 'Beýany'),
+                SizedBox(height: 5),
+                MiddleTextWidget(
+                  text: 'Beýan barada giňişleýin maglumat',
+                ),
+              ],
             ),
-            const SliverToBoxAdapter(child: SizedBox(height: 10)),
-            //image corousel end
-            //product title start
-            const SliverToBoxAdapter(
-              child: MiddleTextWidget(text: 'Haryt ady'),
-            ),
-            const SliverToBoxAdapter(child: SizedBox(height: 10)),
-            SliverToBoxAdapter(
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  const MiddleTextWidget(text: 'Mukdary'),
-                  Container(
-                    height: 30,
-                    width: 100,
-                    decoration: BoxDecoration(
-                      color: Colors.grey.withOpacity(0.5),
-                      borderRadius: AppSpacing.cardRadius,
-                    ),
-                    child: const Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                      children: [
-                        MiddleTextWidget(text: '-'),
-                        SizedBox(width: 3),
-                        MiddleTextWidget(text: '1'),
-                        SizedBox(width: 3),
-                        MiddleTextWidget(text: '+'),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            )
+          )
 
-            //product title end
-            //main field of the screen end
-          ],
-        ),
+          //product title end
+          //main field of the screen end
+        ]),
       ),
+    );
+  }
+}
+
+class _MukdaryField extends StatelessWidget {
+  const _MukdaryField();
+
+  @override
+  Widget build(BuildContext context) {
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        const MiddleTextWidget(text: 'Mukdary'),
+        Container(
+          height: 30,
+          width: 100,
+          decoration: BoxDecoration(
+            // ignore: deprecated_member_use
+            color: Colors.grey.withOpacity(0.5),
+            borderRadius: AppSpacing.cardRadius,
+          ),
+          child: const Row(
+            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            children: [
+              MiddleTextWidget(text: '-'),
+              SizedBox(width: 3),
+              MiddleTextWidget(text: '0.5'),
+              SizedBox(width: 3),
+              MiddleTextWidget(text: '+'),
+            ],
+          ),
+        )
+      ],
     );
   }
 }
@@ -138,6 +172,8 @@ class _AppBarTitleFieldState extends State<_AppBarTitleField> {
 }
 
 class ImageCarouselScreen extends StatefulWidget {
+  const ImageCarouselScreen({super.key});
+
   @override
   State<ImageCarouselScreen> createState() => _ImageCarouselScreenState();
 }

@@ -4,7 +4,7 @@ import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 
 class CategoryViewScreen extends StatefulWidget {

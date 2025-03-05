@@ -1,5 +1,5 @@
 import 'package:get/get.dart';
-import 'package:mata_online_market/core/widgets/product_view_screen.dart';
+import 'package:mata_online_market/features/product_view_screen/presentation/product_view_screen.dart';
 import 'package:mata_online_market/features/category_view_screen/presentation/category_view_screen.dart';
 import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:mata_online_market/features/introduction_screen/presentation/introduction_screen.dart';

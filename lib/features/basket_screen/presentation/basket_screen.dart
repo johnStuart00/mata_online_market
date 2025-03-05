@@ -3,9 +3,9 @@ import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
-import 'package:mata_online_market/core/widgets/mark_text_widget.dart';
-import 'package:mata_online_market/core/widgets/middle_text_widget.dart';
-import 'package:mata_online_market/core/widgets/small_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/mark_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 
 class BasketScreen extends StatelessWidget {
   final List<String> products;
