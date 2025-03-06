@@ -89,7 +89,7 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                 BigTextWidget(text: 'Beýany'),
                 SizedBox(height: 5),
                 MiddleTextWidget(
-                  text: 'Beýan barada giňişleýin maglumat',
+                  text: 'Beýan barada giňişleýin maglumat ',
                 ),
               ],
             ),
