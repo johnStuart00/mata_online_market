@@ -56,14 +56,6 @@ class ProductContainerWidget extends StatelessWidget {
                       ),
                     ],
                   ),
-                  const Row(
-                    mainAxisAlignment: MainAxisAlignment.end,
-                    children: [
-                      IconWidget(
-                        icon: AppIcons.unbasket,
-                      )
-                    ],
-                  )
                 ],
               ),
             ),

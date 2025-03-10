@@ -6,7 +6,8 @@ import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
 
 class ProductImageCarousel extends StatefulWidget {
-  const ProductImageCarousel({super.key});
+  final bool liked;
+  const ProductImageCarousel({super.key, required this.liked});
 
   @override
   State<ProductImageCarousel> createState() => _ProductImageCarouselState();
@@ -21,6 +22,14 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
   ];
 
   int _currentIndex = 0;
+
+  bool isLiked = false;
+
+  void _toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -75,7 +84,13 @@ class _ProductImageCarouselState extends State<ProductImageCarousel> {
             Positioned(
               bottom: 0.0,
               right: AppDimensions.screenWidth(context) * 0.15,
-              child: const IconWidget(icon: AppIcons.unliked),
+              child: GestureDetector(
+                  onTap: () {
+                    _toggleLike();
+                  },
+                  child: isLiked
+                      ? const IconWidget(icon: AppIcons.liked)
+                      : const IconWidget(icon: AppIcons.unliked)),
             ),
           ],
         ),

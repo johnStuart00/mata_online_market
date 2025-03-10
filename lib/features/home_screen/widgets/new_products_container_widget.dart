@@ -32,15 +32,6 @@ class NewProductsWidget extends StatelessWidget {
                       'https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw'),
                 ),
               ),
-              child: const Row(
-                mainAxisAlignment: MainAxisAlignment.end,
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  IconWidget(
-                    icon: AppIcons.unbasket,
-                  ),
-                ],
-              ),
             ),
           ),
           const Expanded(
