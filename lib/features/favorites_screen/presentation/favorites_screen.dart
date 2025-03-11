@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 
 class FavoritesScreen extends StatelessWidget {
@@ -11,28 +12,24 @@ class FavoritesScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: products.isEmpty
-          ? Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'No favorites added.',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            )
-          : CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  pinned: true,
-                  floating: true,
-                  snap: true,
-                  centerTitle: true,
-                  automaticallyImplyLeading: false,
-                  title: Text(AppLocalizations.of(context)!.halanlarym),
-                ),
-                SliverPadding(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: true,
+            snap: true,
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            title: Text(AppLocalizations.of(context)!.halanlarym),
+          ),
+          products.isEmpty
+              //if products list empty
+              ? const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: EmptyPageWidget(),
+                )
+              // if products list not empty
+              : SliverPadding(
                   padding: const EdgeInsets.all(10.0),
                   sliver: SliverGrid(
                     gridDelegate:
@@ -52,9 +49,9 @@ class FavoritesScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SliverToBoxAdapter(child: SizedBox(height: 100)),
-              ],
-            ),
+          const SliverToBoxAdapter(child: SizedBox(height: 100)),
+        ],
+      ),
     );
   }
 }

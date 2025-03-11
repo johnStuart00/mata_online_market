@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
+import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/mark_text_widget.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
@@ -15,28 +16,24 @@ class BasketScreen extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: products.isEmpty
-          ? Center(
-              child: Padding(
-                padding: const EdgeInsets.all(16.0),
-                child: Text(
-                  'No products added to the basket.',
-                  style: Theme.of(context).textTheme.bodyLarge,
-                  textAlign: TextAlign.center,
-                ),
-              ),
-            )
-          : CustomScrollView(
-              slivers: [
-                SliverAppBar(
-                  pinned: true,
-                  floating: true,
-                  snap: true,
-                  centerTitle: true,
-                  automaticallyImplyLeading: false,
-                  title: Text(AppLocalizations.of(context)!.sebedim),
-                ),
-                SliverPadding(
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            pinned: true,
+            floating: true,
+            snap: true,
+            centerTitle: true,
+            automaticallyImplyLeading: false,
+            title: Text(AppLocalizations.of(context)!.sebedim),
+          ),
+          products.isEmpty
+              //if products list empty
+              ? const SliverFillRemaining(
+                  hasScrollBody: false,
+                  child: EmptyPageWidget(),
+                )
+              // if products list not empty
+              : SliverPadding(
                   padding: const EdgeInsets.all(10.0),
                   sliver: SliverList(
                     delegate: SliverChildBuilderDelegate(
@@ -59,9 +56,9 @@ class BasketScreen extends StatelessWidget {
                     ),
                   ),
                 ),
-                const SliverToBoxAdapter(child: SizedBox(height: 100)),
-              ],
-            ),
+          const SliverToBoxAdapter(child: SizedBox(height: 100)),
+        ],
+      ),
     );
   }
 }
