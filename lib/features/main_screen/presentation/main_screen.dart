@@ -34,7 +34,12 @@ class _MyHomePageState extends State<MyHomePage> {
               children: const [
                 HomeScreen(),
                 BasketScreen(
-                  products: [],
+                  products: [
+                    'Product 1',
+                    'Product 2',
+                    'Product 3',
+                    'Product 4',
+                  ],
                 ),
                 FavoritesScreen(products: [
                   'Product 1',
