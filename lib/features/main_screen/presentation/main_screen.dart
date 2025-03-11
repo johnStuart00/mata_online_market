@@ -39,6 +39,12 @@ class _MyHomePageState extends State<MyHomePage> {
                     'Product 2',
                     'Product 3',
                     'Product 4',
+                    'Product 2',
+                    'Product 3',
+                    'Product 4',
+                    'Product 2',
+                    'Product 3',
+                    'Product 4',
                   ],
                 ),
                 FavoritesScreen(products: [
