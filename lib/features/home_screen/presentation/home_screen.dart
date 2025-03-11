@@ -24,6 +24,14 @@ class _HomeScreenState extends State<HomeScreen> {
   static const String backNewProductImagePath =
       "assets/images/back_new_products.png";
 
+  bool liked = false;
+
+  void _updateLiked(bool newValue) {
+    setState(() {
+      liked = newValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -104,10 +112,14 @@ class _HomeScreenState extends State<HomeScreen> {
                           return Padding(
                             padding: AppSpacing.smallPadding,
                             child: GestureDetector(
-                                onTap: () {
-                                  Get.toNamed(RouteHelper.productViewScreen);
-                                },
-                                child: const ProductContainerWidget()),
+                              onTap: () {
+                                Get.toNamed(RouteHelper.productViewScreen);
+                              },
+                              child: ProductContainerWidget(
+                                onLiked: liked,
+                                onLikedChanged: _updateLiked,
+                              ),
+                            ),
                           );
                         },
                       ),
@@ -265,10 +277,14 @@ class _HomeScreenState extends State<HomeScreen> {
                   return Padding(
                     padding: AppSpacing.smallPadding,
                     child: GestureDetector(
-                        onTap: () {
-                          Get.toNamed(RouteHelper.productViewScreen);
-                        },
-                        child: const ProductContainerWidget()),
+                      onTap: () {
+                        Get.toNamed(RouteHelper.productViewScreen);
+                      },
+                      child: ProductContainerWidget(
+                        onLiked: liked,
+                        onLikedChanged: _updateLiked,
+                      ),
+                    ),
                   );
                 },
                 childCount: 50,

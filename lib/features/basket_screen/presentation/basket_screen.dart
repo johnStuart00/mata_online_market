@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
@@ -15,10 +17,17 @@ class BasketScreen extends StatefulWidget {
 
 class _BasketScreenState extends State<BasketScreen> {
   double productQuantity = 0.5;
+  bool liked = false;
 
   void _updateMukdary(double newValue) {
     setState(() {
       productQuantity = newValue;
+    });
+  }
+
+  void _updateLiked(bool newValue) {
+    setState(() {
+      liked = newValue;
     });
   }
 
@@ -49,14 +58,20 @@ class _BasketScreenState extends State<BasketScreen> {
                       (context, index) {
                         return Padding(
                           padding: AppSpacing.smallPadding,
-                          child: BasketContainerWidget(
-                            imageUrl: 'assets/images/2.jpg',
-                            productName: 'Product name',
-                            productDescription: 'Product description',
-                            productPrice: 10.0,
-                            productQuantity: productQuantity,
-                            onLikePressed: () {},
-                            onQuantityChanged: _updateMukdary,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(RouteHelper.productViewScreen);
+                            },
+                            child: BasketContainerWidget(
+                              imageUrl: 'assets/images/2.jpg',
+                              productName: 'Product name',
+                              productDescription: 'Product description',
+                              productPrice: 10.0,
+                              productQuantity: productQuantity,
+                              onLiked: liked,
+                              onLikedChanged: _updateLiked,
+                              onQuantityChanged: _updateMukdary,
+                            ),
                           ),
                         );
                       },

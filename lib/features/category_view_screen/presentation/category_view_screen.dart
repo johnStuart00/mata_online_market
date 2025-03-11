@@ -17,6 +17,14 @@ class CategoryViewScreen extends StatefulWidget {
 class _CategoryViewScreenState extends State<CategoryViewScreen> {
   final List<String> products = [];
 
+  bool liked = false;
+
+  void _updateLiked(bool newValue) {
+    setState(() {
+      liked = newValue;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -58,13 +66,22 @@ class _CategoryViewScreenState extends State<CategoryViewScreen> {
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return const Column(
+                        return Column(
                           children: [
                             Padding(
                               padding: AppSpacing.smallPadding,
-                              child: ProductContainerWidget(),
+                              child: GestureDetector(
+                                onTap: () {
+                                  Get.toNamed(RouteHelper.productViewScreen);
+                                },
+                                child: ProductContainerWidget(
+                                  onLiked: liked,
+                                  onLikedChanged: _updateLiked,
+                                ),
+                              ),
                             ),
-                            SliverToBoxAdapter(child: SizedBox(height: 100)),
+                            const SliverToBoxAdapter(
+                                child: SizedBox(height: 100)),
                           ],
                         );
                       },

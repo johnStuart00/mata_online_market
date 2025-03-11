@@ -11,8 +11,9 @@ class BasketContainerWidget extends StatefulWidget {
   final String productDescription;
   final double productPrice;
   final double productQuantity;
-  final VoidCallback onLikePressed;
+  final bool onLiked;
   final Function(double) onQuantityChanged;
+  final Function(bool) onLikedChanged;
 
   const BasketContainerWidget({
     super.key,
@@ -21,8 +22,9 @@ class BasketContainerWidget extends StatefulWidget {
     required this.productDescription,
     required this.productPrice,
     required this.productQuantity,
+    required this.onLiked,
     required this.onQuantityChanged,
-    required this.onLikePressed,
+    required this.onLikedChanged,
   });
 
   @override
@@ -31,11 +33,13 @@ class BasketContainerWidget extends StatefulWidget {
 
 class _BasketContainerWidgetState extends State<BasketContainerWidget> {
   late double productQuantity;
+  late bool isLiked;
 
   @override
   void initState() {
     super.initState();
     productQuantity = widget.productQuantity;
+    isLiked = widget.onLiked;
   }
 
   void _onIncreasePressed() {
@@ -49,6 +53,13 @@ class _BasketContainerWidgetState extends State<BasketContainerWidget> {
     setState(() {
       if (productQuantity > 0) productQuantity -= 0.5;
       widget.onQuantityChanged(productQuantity);
+    });
+  }
+
+  void _toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+      widget.onLikedChanged(isLiked);
     });
   }
 
@@ -94,8 +105,14 @@ class _BasketContainerWidgetState extends State<BasketContainerWidget> {
                   children: [
                     MiddleTextWidget(text: widget.productName),
                     GestureDetector(
-                        onTap: () {},
-                        child: const IconWidget(icon: AppIcons.unliked)),
+                      onTap: () {
+                        _toggleLike();
+                        widget.onLikedChanged(isLiked);
+                      },
+                      child: isLiked
+                          ? const IconWidget(icon: AppIcons.liked)
+                          : const IconWidget(icon: AppIcons.unliked),
+                    ),
                   ],
                 ),
                 MiddleTextWidget(text: widget.productDescription),

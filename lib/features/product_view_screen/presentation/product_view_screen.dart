@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_dimension.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
@@ -36,13 +37,19 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
 
   bool isLiked = false;
 
-  final List<String> products = [];
-
   double mataMukdaryValue = 0.5;
 
   void _updateMukdary(double newValue) {
     setState(() {
       mataMukdaryValue = newValue;
+    });
+  }
+
+  bool liked = false;
+
+  void _updateLiked(bool newValue) {
+    setState(() {
+      liked = newValue;
     });
   }
 
@@ -167,8 +174,14 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                       return Padding(
                         padding: AppSpacing.smallPadding,
                         child: GestureDetector(
-                            onTap: () {},
-                            child: const ProductContainerWidget()),
+                          onTap: () {
+                            Get.toNamed(RouteHelper.productViewScreen);
+                          },
+                          child: ProductContainerWidget(
+                            onLiked: liked,
+                            onLikedChanged: _updateLiked,
+                          ),
+                        ),
                       );
                     },
                     childCount: 5,

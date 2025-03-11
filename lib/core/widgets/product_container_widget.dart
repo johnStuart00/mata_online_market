@@ -6,10 +6,34 @@ import 'package:mata_online_market/core/widgets/text_widgets/old_mark_text_widge
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 
-class ProductContainerWidget extends StatelessWidget {
+class ProductContainerWidget extends StatefulWidget {
+  final bool onLiked;
+  final Function(bool) onLikedChanged;
   const ProductContainerWidget({
     super.key,
+    required this.onLiked,
+    required this.onLikedChanged,
   });
+
+  @override
+  State<ProductContainerWidget> createState() => _ProductContainerWidgetState();
+}
+
+class _ProductContainerWidgetState extends State<ProductContainerWidget> {
+  late bool isLiked;
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.onLiked;
+  }
+
+  void _toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+      widget.onLikedChanged(isLiked);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -51,9 +75,15 @@ class ProductContainerWidget extends StatelessWidget {
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       _DiscountWidget(),
-                      const IconWidget(
-                        icon: AppIcons.unliked,
-                      ),
+                      GestureDetector(
+                        onTap: () {
+                          _toggleLike();
+                          widget.onLikedChanged(isLiked);
+                        },
+                        child: isLiked
+                            ? const IconWidget(icon: AppIcons.liked)
+                            : const IconWidget(icon: AppIcons.unliked),
+                      )
                     ],
                   ),
                 ],

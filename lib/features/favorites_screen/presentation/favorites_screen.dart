@@ -1,13 +1,28 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
 
-class FavoritesScreen extends StatelessWidget {
+class FavoritesScreen extends StatefulWidget {
   final List<String> products;
 
   const FavoritesScreen({super.key, required this.products});
+
+  @override
+  State<FavoritesScreen> createState() => _FavoritesScreenState();
+}
+
+class _FavoritesScreenState extends State<FavoritesScreen> {
+  bool liked = false;
+
+  void _updateLiked(bool newValue) {
+    setState(() {
+      liked = newValue;
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -22,7 +37,7 @@ class FavoritesScreen extends StatelessWidget {
             automaticallyImplyLeading: false,
             title: Text(AppLocalizations.of(context)!.halanlarym),
           ),
-          products.isEmpty
+          widget.products.isEmpty
               //if products list empty
               ? const SliverFillRemaining(
                   hasScrollBody: false,
@@ -41,11 +56,20 @@ class FavoritesScreen extends StatelessWidget {
                     ),
                     delegate: SliverChildBuilderDelegate(
                       (context, index) {
-                        return const Padding(
-                            padding: AppSpacing.smallPadding,
-                            child: ProductContainerWidget());
+                        return Padding(
+                          padding: AppSpacing.smallPadding,
+                          child: GestureDetector(
+                            onTap: () {
+                              Get.toNamed(RouteHelper.productViewScreen);
+                            },
+                            child: ProductContainerWidget(
+                              onLiked: liked,
+                              onLikedChanged: _updateLiked,
+                            ),
+                          ),
+                        );
                       },
-                      childCount: products.length,
+                      childCount: widget.products.length,
                     ),
                   ),
                 ),
