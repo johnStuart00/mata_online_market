@@ -111,6 +111,7 @@ class _BasketScreenState extends State<BasketScreen> {
                               // ignore: deprecated_member_use
                               color: Theme.of(context)
                                   .shadowColor
+                                  // ignore: deprecated_member_use
                                   .withOpacity(0.3),
                               blurRadius: 5.0,
                               spreadRadius: 0.01,
