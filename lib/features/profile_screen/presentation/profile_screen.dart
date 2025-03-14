@@ -127,10 +127,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 itemBuilder: (context, index) {
                   final item = profileSettings[index];
                   return ProfileSettingWidget(
-                      icon: item['icon'],
-                      text: item['text'],
-                      value: item['value'],
-                      onTap: item['ontap']);
+                    icon: item['icon'],
+                    text: item['text'],
+                    value: item['value'],
+                    onTap: item['ontap'],
+                  );
                 },
               ),
             ),
