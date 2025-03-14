@@ -161,7 +161,7 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                     text: AppLocalizations.of(context)!.siziGyzyklandyrypBiler),
               ),
               SliverPadding(
-                padding: const EdgeInsets.all(10.0),
+                padding: const EdgeInsets.all(0.0),
                 sliver: SliverGrid(
                   gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(
                     maxCrossAxisExtent: 300.0,
@@ -175,7 +175,9 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                         padding: AppSpacing.smallPadding,
                         child: GestureDetector(
                           onTap: () {
-                            Get.toNamed(RouteHelper.productViewScreen);
+                            Get.toNamed(
+                              RouteHelper.productViewScreen,
+                            );
                           },
                           child: ProductContainerWidget(
                             onLiked: liked,

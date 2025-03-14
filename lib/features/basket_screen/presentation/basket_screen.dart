@@ -46,7 +46,8 @@ class _BasketScreenState extends State<BasketScreen> {
                 snap: true,
                 centerTitle: true,
                 automaticallyImplyLeading: false,
-                title: Text(AppLocalizations.of(context)!.sebedim),
+                title: MiddleTextWidget(
+                    text: AppLocalizations.of(context)!.sebedim),
               ),
               widget.products.isEmpty
                   //if products list empty

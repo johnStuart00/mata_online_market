@@ -1,10 +1,11 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
-import 'package:mata_online_market/core/assets/app_images.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
-import 'package:adaptive_theme/adaptive_theme.dart';
-import 'package:shared_preferences/shared_preferences.dart';
+import 'package:mata_online_market/features/profile_screen/widgets/location_widget.dart';
+import 'package:mata_online_market/features/profile_screen/widgets/profile_setting_widget.dart';
+import 'package:mata_online_market/features/profile_screen/widgets/theme_switcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
 class ProfileScreen extends StatefulWidget {
@@ -15,28 +16,47 @@ class ProfileScreen extends StatefulWidget {
 }
 
 class _ProfileScreenState extends State<ProfileScreen> {
+  bool isUserLoggedIn = false;
+
   @override
   Widget build(BuildContext context) {
     final List<Map<String, dynamic>> profileSettings = [
       {
         'icon': AppIcons.darkMode,
         'text': AppLocalizations.of(context)!.garankyTema,
-        'value': _ThemeModeSwitcher(),
-      },
-      {
-        'icon': AppIcons.bag,
-        'text': AppLocalizations.of(context)!.sargytlarym,
-        'value': const SizedBox(),
+        'value': const ThemeModeSwitcher(),
       },
       {
         'icon': AppIcons.user,
         'text': AppLocalizations.of(context)!.prifile,
         'value': const SizedBox(),
+        'ontap': () {
+          if (isUserLoggedIn) {
+            Get.dialog(
+              const AlertDialog(
+                title: Text("loggedin"),
+              ),
+            );
+          } else {
+            Get.defaultDialog(
+              title: 'Bagyşlaň',
+              content: const MiddleTextWidget(
+                  text: 'Bu sahypa geçmek üçin siz agza bolmaly'),
+              textConfirm: 'Bolýa',
+              onConfirm: () {
+                Get.back();
+              },
+            );
+          }
+        },
       },
       {
         'icon': AppIcons.location,
         'text': AppLocalizations.of(context)!.salgy,
         'value': const SizedBox(),
+        'ontap': () {
+          Get.to(() => const LocationContainerWidget());
+        },
       },
       {
         'icon': AppIcons.keepInChat,
@@ -106,11 +126,11 @@ class _ProfileScreenState extends State<ProfileScreen> {
                 itemCount: profileSettings.length,
                 itemBuilder: (context, index) {
                   final item = profileSettings[index];
-                  return ProfileSettingItem(
-                    icon: item['icon'],
-                    text: item['text'],
-                    value: item['value'],
-                  );
+                  return ProfileSettingWidget(
+                      icon: item['icon'],
+                      text: item['text'],
+                      value: item['value'],
+                      onTap: item['ontap']);
                 },
               ),
             ),
@@ -167,116 +187,6 @@ class _AppBarField extends StatelessWidget {
           ],
         ),
       ),
-    );
-  }
-}
-
-class ProfileSettingItem extends StatelessWidget {
-  final IconData icon;
-  final String text;
-  final Widget value;
-
-  const ProfileSettingItem({
-    super.key,
-    required this.icon,
-    required this.text,
-    required this.value,
-  });
-
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      margin: const EdgeInsets.only(bottom: 10),
-      padding: AppSpacing.smallPadding,
-      decoration: BoxDecoration(
-        color: Theme.of(context)
-            .bottomNavigationBarTheme
-            .backgroundColor
-            // ignore: deprecated_member_use
-            ?.withOpacity(0.7),
-        borderRadius: BorderRadius.circular(10),
-        border: Border.all(
-          color: Theme.of(context).iconTheme.color!,
-          width: 1.0,
-        ),
-        boxShadow: [
-          BoxShadow(
-            // ignore: deprecated_member_use
-            color: Theme.of(context).shadowColor.withOpacity(0.1),
-            blurRadius: 3.0,
-            spreadRadius: 0.5,
-            offset: const Offset(0, 1),
-          ),
-        ],
-      ),
-      child: Row(
-        children: [
-          Icon(icon),
-          const SizedBox(width: 5),
-          MiddleTextWidget(text: text),
-          Expanded(
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                value,
-              ],
-            ),
-          ),
-          const SizedBox(width: 5),
-        ],
-      ),
-    );
-  }
-}
-
-class _ThemeModeSwitcher extends StatefulWidget {
-  @override
-  State<_ThemeModeSwitcher> createState() => _ThemeModeSwitcherState();
-}
-
-class _ThemeModeSwitcherState extends State<_ThemeModeSwitcher> {
-  bool _isDark = false;
-
-  _loadThemeMode() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      _isDark =
-          prefs.getBool('isDark') ?? false; // Default is false (light mode)
-    });
-  }
-
-  _saveThemeMode(bool isDark) async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setBool('isDark', isDark);
-  }
-
-  @override
-  void initState() {
-    super.initState();
-    _loadThemeMode();
-  }
-
-  @override
-  Widget build(BuildContext context) {
-    bool isDark = _isDark;
-
-    return Switch(
-      value: isDark,
-      activeThumbImage: AssetImage(AssetsPath().nightImagePath),
-      inactiveThumbImage: AssetImage(AssetsPath().dayImagePath),
-      onChanged: (bool value) {
-        setState(() {
-          _isDark = value;
-        });
-
-        _saveThemeMode(value);
-
-        if (value) {
-          AdaptiveTheme.of(context).setDark();
-        } else {
-          AdaptiveTheme.of(context).setLight();
-        }
-      },
     );
   }
 }

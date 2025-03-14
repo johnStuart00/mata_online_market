@@ -4,10 +4,34 @@ import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 
-class NewProductsWidget extends StatelessWidget {
+class NewProductsWidget extends StatefulWidget {
+  final bool onliked;
+  final Function(bool) onLikedChanged;
   const NewProductsWidget({
     super.key,
+    required this.onliked,
+    required this.onLikedChanged,
   });
+
+  @override
+  State<NewProductsWidget> createState() => _NewProductsWidgetState();
+}
+
+class _NewProductsWidgetState extends State<NewProductsWidget> {
+  late bool isLiked;
+
+  @override
+  void initState() {
+    super.initState();
+    isLiked = widget.onliked;
+  }
+
+  void _toggleLike() {
+    setState(() {
+      isLiked = !isLiked;
+      widget.onLikedChanged(isLiked);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -34,19 +58,24 @@ class NewProductsWidget extends StatelessWidget {
               ),
             ),
           ),
-          const Expanded(
+          Expanded(
             child: Column(
               children: [
                 Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    IconWidget(
-                      icon: AppIcons.unliked,
+                    GestureDetector(
+                      onTap: () {
+                        _toggleLike();
+                      },
+                      child: isLiked
+                          ? const IconWidget(icon: AppIcons.liked)
+                          : const IconWidget(icon: AppIcons.unliked),
                     ),
                   ],
                 ),
-                Column(
+                const Column(
                   mainAxisAlignment: MainAxisAlignment.start,
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [

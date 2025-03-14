@@ -24,11 +24,18 @@ class _HomeScreenState extends State<HomeScreen> {
   static const String backNewProductImagePath =
       "assets/images/back_new_products.png";
 
-  bool liked = false;
+  bool productliked = false;
+  bool newProductliked = false;
 
-  void _updateLiked(bool newValue) {
+  void _updateProductLiked(bool newValue) {
     setState(() {
-      liked = newValue;
+      productliked = newValue;
+    });
+  }
+
+  void _updateNewProductLiked(bool newValue) {
+    setState(() {
+      newProductliked = newValue;
     });
   }
 
@@ -116,8 +123,8 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Get.toNamed(RouteHelper.productViewScreen);
                               },
                               child: ProductContainerWidget(
-                                onLiked: liked,
-                                onLikedChanged: _updateLiked,
+                                onLiked: productliked,
+                                onLikedChanged: _updateProductLiked,
                               ),
                             ),
                           );
@@ -171,10 +178,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         return Padding(
                           padding: AppSpacing.smallPadding,
                           child: GestureDetector(
-                              onTap: () {
-                                Get.toNamed(RouteHelper.productViewScreen);
-                              },
-                              child: const NewProductsWidget()),
+                            onTap: () {
+                              Get.toNamed(RouteHelper.productViewScreen);
+                            },
+                            child: NewProductsWidget(
+                              onliked: newProductliked,
+                              onLikedChanged: _updateNewProductLiked,
+                            ),
+                          ),
                         );
                       },
                     ),
@@ -281,8 +292,8 @@ class _HomeScreenState extends State<HomeScreen> {
                         Get.toNamed(RouteHelper.productViewScreen);
                       },
                       child: ProductContainerWidget(
-                        onLiked: liked,
-                        onLikedChanged: _updateLiked,
+                        onLiked: productliked,
+                        onLikedChanged: _updateProductLiked,
                       ),
                     ),
                   );
