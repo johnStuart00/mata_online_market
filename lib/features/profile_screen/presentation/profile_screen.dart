@@ -1,9 +1,10 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
+import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
-import 'package:mata_online_market/features/profile_screen/widgets/location_widget.dart';
+import 'package:mata_online_market/features/profile_screen/widgets/language_switcher_widget.dart';
 import 'package:mata_online_market/features/profile_screen/widgets/profile_setting_widget.dart';
 import 'package:mata_online_market/features/profile_screen/widgets/theme_switcher.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
@@ -55,7 +56,7 @@ class _ProfileScreenState extends State<ProfileScreen> {
         'text': AppLocalizations.of(context)!.salgy,
         'value': const SizedBox(),
         'ontap': () {
-          Get.to(() => const LocationContainerWidget());
+          Get.toNamed(RouteHelper.locationViewScreen);
         },
       },
       {
@@ -66,17 +67,20 @@ class _ProfileScreenState extends State<ProfileScreen> {
       {
         'icon': AppIcons.language,
         'text': AppLocalizations.of(context)!.dil,
-        'value': const SizedBox(),
+        'value': const LanguageSwitcher(),
       },
-      {
-        'icon': AppIcons.helpAndSupport,
-        'text': AppLocalizations.of(context)!.komekWeGoldaw,
-        'value': const SizedBox(),
-      },
+      // {
+      //   'icon': AppIcons.helpAndSupport,
+      //   'text': AppLocalizations.of(context)!.komekWeGoldaw,
+      //   'value': const SizedBox(),
+      // },
       {
         'icon': AppIcons.securityPrivacy,
         'text': AppLocalizations.of(context)!.gizlinlikSyyasaty,
         'value': const SizedBox(),
+        'ontap': () {
+          Get.toNamed(RouteHelper.securityPrivacyScreen);
+        },
       },
       {
         'icon': AppIcons.conditions,

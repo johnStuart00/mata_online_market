@@ -21,7 +21,7 @@ class _LocationContainerWidgetState extends State<LocationContainerWidget> {
         centerTitle: true,
         automaticallyImplyLeading: false,
         title: const MiddleTextWidget(
-          text: 'Dükanlar',
+          text: 'Dükanlarymyz',
         ),
         leading: GestureDetector(
           onTap: () {
@@ -33,6 +33,7 @@ class _LocationContainerWidgetState extends State<LocationContainerWidget> {
       body: Padding(
         padding: AppSpacing.smallPadding,
         child: Container(
+          height: 100,
           decoration: BoxDecoration(
             color: Theme.of(context).bottomNavigationBarTheme.backgroundColor,
             borderRadius: AppSpacing.cardRadius,
@@ -65,7 +66,7 @@ class _LocationContainerWidgetState extends State<LocationContainerWidget> {
                 flex: 2,
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
-                  mainAxisAlignment: MainAxisAlignment.start,
+                  mainAxisAlignment: MainAxisAlignment.center,
                   children: [
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
