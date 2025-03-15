@@ -103,6 +103,7 @@ class _BasketContainerWidgetState extends State<BasketContainerWidget> {
                 Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
+                    //const NumberInputField(),
                     MiddleTextWidget(text: widget.productName),
                     GestureDetector(
                       onTap: () {
