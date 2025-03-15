@@ -1,6 +1,6 @@
 import 'package:adaptive_theme/adaptive_theme.dart';
 import 'package:flutter/material.dart';
-import 'package:mata_online_market/core/assets/app_images.dart';
+// import 'package:mata_online_market/core/assets/app_images.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 class ThemeModeSwitcher extends StatefulWidget {
@@ -38,8 +38,9 @@ class ThemeModeSwitcherState extends State<ThemeModeSwitcher> {
 
     return Switch(
       value: isDark,
-      activeThumbImage: AssetImage(AssetsPath().nightImagePath),
-      inactiveThumbImage: AssetImage(AssetsPath().dayImagePath),
+      // activeThumbImage: AssetImage(AssetsPath().nightImagePath),
+      // inactiveThumbImage: AssetImage(AssetsPath().dayImagePath),
+      activeColor: Theme.of(context).iconTheme.color,
       onChanged: (bool value) {
         setState(() {
           _isDark = value;

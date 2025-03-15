@@ -82,15 +82,18 @@ class _ProfileScreenState extends State<ProfileScreen> {
           Get.toNamed(RouteHelper.securityPrivacyScreen);
         },
       },
-      {
-        'icon': AppIcons.conditions,
-        'text': AppLocalizations.of(context)!.sertler,
-        'value': const SizedBox(),
-      },
+      // {
+      //   'icon': AppIcons.conditions,
+      //   'text': AppLocalizations.of(context)!.sertler,
+      //   'value': const SizedBox(),
+      // },
       {
         'icon': AppIcons.aboutUs,
         'text': AppLocalizations.of(context)!.bizBarada,
         'value': const SizedBox(),
+        'ontap': () {
+          Get.toNamed(RouteHelper.aboutUsScreen);
+        },
       },
       {
         'icon': AppIcons.version,

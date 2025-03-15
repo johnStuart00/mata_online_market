@@ -3,6 +3,7 @@ import 'package:mata_online_market/features/product_view_screen/presentation/pro
 import 'package:mata_online_market/features/category_view_screen/presentation/category_view_screen.dart';
 import 'package:mata_online_market/features/main_screen/presentation/main_screen.dart';
 import 'package:mata_online_market/features/introduction_screen/presentation/introduction_screen.dart';
+import 'package:mata_online_market/features/profile_screen/widgets/about_us_widget.dart';
 import 'package:mata_online_market/features/profile_screen/widgets/location_widget.dart';
 import 'package:mata_online_market/features/profile_screen/widgets/security_privacy_widget.dart';
 import 'package:mata_online_market/features/search_screen/presentation/search_screen.dart';
@@ -18,6 +19,7 @@ class RouteHelper {
   static const String productViewScreen = '/productViewScreen';
   static const String locationViewScreen = '/locationViewScreen';
   static const String securityPrivacyScreen = '/securityPrivacyScreen';
+  static const String aboutUsScreen = '/aboutUsScreen';
 
   //Route path getters
   static String getInitialRoute() => initialRoute;
@@ -64,6 +66,11 @@ class RouteHelper {
     GetPage(
       name: securityPrivacyScreen,
       page: () => const SecurityPrivacyScreen(),
+      transition: Transition.fadeIn,
+    ),
+    GetPage(
+      name: aboutUsScreen,
+      page: () => const AboutUsScreen(),
       transition: Transition.fadeIn,
     ),
   ];
