@@ -5,6 +5,7 @@ import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
 import 'package:mata_online_market/core/widgets/product_container_widget.dart';
+import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 
 class FavoritesScreen extends StatefulWidget {
   final List<String> products;
@@ -35,7 +36,9 @@ class _FavoritesScreenState extends State<FavoritesScreen> {
             snap: true,
             centerTitle: true,
             automaticallyImplyLeading: false,
-            title: Text(AppLocalizations.of(context)!.halanlarym),
+            title: MiddleTextWidget(
+              text: AppLocalizations.of(context)!.halanlarym,
+            ),
           ),
           widget.products.isEmpty
               //if products list empty

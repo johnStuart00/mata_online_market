@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
-import 'package:mata_online_market/core/constants/app_dimension.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 import 'package:mata_online_market/core/widgets/empty_page_widget.dart';
@@ -87,44 +86,31 @@ class _BasketScreenState extends State<BasketScreen> {
               const SliverToBoxAdapter(child: SizedBox(height: 160)),
             ],
           ),
-          //order button start
+          // order button start
           Positioned(
-            bottom: 0,
+            bottom: 115,
+            right: 20,
             child: Container(
-              height: 160,
-              width: AppDimensions.screenWidth(context),
-              color: Theme.of(context).scaffoldBackgroundColor,
-              child: Column(
-                mainAxisAlignment: MainAxisAlignment.start,
-                children: [
-                  GestureDetector(
-                    onTap: () {},
-                    child: Container(
-                      height: 50,
-                      alignment: Alignment.center,
-                      decoration: BoxDecoration(
-                          color: Theme.of(context)
-                              .bottomNavigationBarTheme
-                              .backgroundColor,
-                          borderRadius: AppSpacing.cardRadius,
-                          boxShadow: [
-                            BoxShadow(
-                              // ignore: deprecated_member_use
-                              color: Theme.of(context)
-                                  .shadowColor
-                                  // ignore: deprecated_member_use
-                                  .withOpacity(0.3),
-                              blurRadius: 5.0,
-                              spreadRadius: 0.01,
-                              offset: const Offset(0, 2),
-                            ),
-                          ]),
-                      child: MiddleTextWidget(
-                          text: AppLocalizations.of(context)!.sargytEtmek),
+              height: 50,
+              width: 150,
+              alignment: Alignment.center,
+              decoration: BoxDecoration(
+                  color: Theme.of(context).primaryColor,
+                  borderRadius: AppSpacing.cardRadius,
+                  boxShadow: [
+                    BoxShadow(
+                      // ignore: deprecated_member_use
+                      color: Theme.of(context)
+                          .shadowColor
+                          // ignore: deprecated_member_use
+                          .withOpacity(0.3),
+                      blurRadius: 5.0,
+                      spreadRadius: 0.01,
+                      offset: const Offset(0, 2),
                     ),
-                  ),
-                ],
-              ),
+                  ]),
+              child: MiddleTextWidget(
+                  text: AppLocalizations.of(context)!.sargytEtmek),
             ),
             //order button end
           )
