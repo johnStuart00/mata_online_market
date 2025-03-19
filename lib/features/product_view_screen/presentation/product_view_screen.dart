@@ -39,12 +39,6 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
 
   double mataMukdaryValue = 0.5;
 
-  void _updateMukdary(double newValue) {
-    setState(() {
-      mataMukdaryValue = newValue;
-    });
-  }
-
   bool liked = false;
 
   void _updateLiked(bool newValue) {
@@ -117,11 +111,8 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                     BigTextWidget(text: AppLocalizations.of(context)!.harytAdy),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 10)),
-              SliverToBoxAdapter(
-                child: AmountField(
-                  mukdary: mataMukdaryValue,
-                  onMukdaryChanged: _updateMukdary,
-                ),
+              const SliverToBoxAdapter(
+                child: AmountField(),
               ),
               const SliverToBoxAdapter(child: SizedBox(height: 10)),
               //new price and old price start

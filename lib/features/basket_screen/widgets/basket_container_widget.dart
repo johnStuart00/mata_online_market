@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
 import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
@@ -34,26 +35,13 @@ class BasketContainerWidget extends StatefulWidget {
 class _BasketContainerWidgetState extends State<BasketContainerWidget> {
   late double productQuantity;
   late bool isLiked;
+  final TextEditingController _controller = TextEditingController();
 
   @override
   void initState() {
     super.initState();
     productQuantity = widget.productQuantity;
     isLiked = widget.onLiked;
-  }
-
-  void _onIncreasePressed() {
-    setState(() {
-      productQuantity += 0.5;
-      widget.onQuantityChanged(productQuantity);
-    });
-  }
-
-  void _onDecreasePressed() {
-    setState(() {
-      if (productQuantity > 0) productQuantity -= 0.5;
-      widget.onQuantityChanged(productQuantity);
-    });
   }
 
   void _toggleLike() {
@@ -119,32 +107,36 @@ class _BasketContainerWidgetState extends State<BasketContainerWidget> {
                 MiddleTextWidget(text: widget.productDescription),
                 const SizedBox(height: 8.0),
                 Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                   children: [
-                    MarkTextWidget(
-                        text: '${widget.productPrice.toStringAsFixed(2)} TMT'),
-                    Row(
-                      children: [
-                        GestureDetector(
-                            onTap: () {
-                              _onDecreasePressed();
-                            },
-                            child: const IconWidget(icon: AppIcons.remove)),
-                        SizedBox(
-                          width: 30,
-                          child: Center(
-                            child: MiddleTextWidget(
-                              text: '$productQuantity',
-                            ),
+                    Expanded(
+                      child: MarkTextWidget(
+                          text:
+                              '${widget.productPrice.toStringAsFixed(2)} TMT'),
+                    ),
+                    SizedBox(
+                      width: 75.0,
+                      child: TextField(
+                        controller: _controller,
+                        keyboardType: TextInputType.number,
+                        inputFormatters: [
+                          FilteringTextInputFormatter.digitsOnly,
+                          LengthLimitingTextInputFormatter(5),
+                        ],
+                        style: const TextStyle(fontSize: 15),
+                        decoration: const InputDecoration(
+                          enabledBorder: UnderlineInputBorder(
+                            borderSide: BorderSide(color: Colors.black),
+                          ),
+                          focusedBorder: UnderlineInputBorder(
+                            borderSide:
+                                BorderSide(color: Colors.blue, width: 2),
                           ),
                         ),
-                        GestureDetector(
-                            onTap: () {
-                              _onIncreasePressed();
-                            },
-                            child: const IconWidget(icon: AppIcons.add))
-                      ],
+                      ),
                     ),
+                    const MiddleTextWidget(text: 'SM'),
+                    const SizedBox(width: 10),
                   ],
                 ),
               ],
