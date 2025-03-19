@@ -30,4 +30,5 @@ class AppIcons {
   static const IconData aboutUs = Icons.group_outlined;
   static const IconData version = Icons.verified_outlined;
   static const IconData singIn = Icons.door_back_door_outlined;
+  static const IconData delete = Icons.delete;
 }

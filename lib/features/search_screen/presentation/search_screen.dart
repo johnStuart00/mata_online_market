@@ -4,6 +4,7 @@ import 'package:hive_flutter/hive_flutter.dart';
 import 'package:mata_online_market/config/routes/route_helper.dart';
 import 'package:mata_online_market/core/assets/app_icons.dart';
 import 'package:mata_online_market/core/constants/app_spacing.dart';
+import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
 import 'package:mata_online_market/features/home_screen/widgets/search_field_widget.dart';
 import 'package:flutter_gen/gen_l10n/app_localizations.dart';
 
@@ -52,14 +53,14 @@ class _SearchScreenState extends State<SearchScreen> {
                 ),
               ),
               const SizedBox(width: 8.0),
-              IconButton(
-                icon: const Icon(AppIcons.close),
-                onPressed: () {
+              GestureDetector(
+                onTap: () {
                   Get.toNamed(
                     RouteHelper.initialRoute,
                     preventDuplicates: true,
                   );
                 },
+                child: const IconWidget(icon: AppIcons.close),
               ),
             ],
           ),
@@ -80,12 +81,15 @@ class _SearchScreenState extends State<SearchScreen> {
                   itemBuilder: (context, index) {
                     final searchQuery = box.getAt(index);
                     return ListTile(
-                      title: Text(searchQuery ?? ''),
-                      // trailing: IconButton(
-                      //   icon: const Icon(Icons.delete),
-                      //   onPressed: () => box.deleteAt(index),
-                      // ),
-                    );
+                        title: Text(searchQuery ?? ''),
+                        trailing: GestureDetector(
+                          onTap: () {
+                            box.deleteAt(index);
+                          },
+                          child: const IconWidget(
+                            icon: AppIcons.delete,
+                          ),
+                        ));
                   },
                 );
               },
