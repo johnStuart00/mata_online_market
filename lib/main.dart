@@ -13,9 +13,11 @@ Future<void> main() async {
   await Hive.initFlutter();
   await Hive.openBox<String>('searchHistory');
   final savedThemeMode = await _loadThemeMode();
-  runApp(OnlineMataMarket(
-    savedThemeMode: savedThemeMode,
-  ));
+  runApp(
+    OnlineMataMarket(
+      savedThemeMode: savedThemeMode,
+    ),
+  );
 }
 
 Future<AdaptiveThemeMode> _loadThemeMode() async {
