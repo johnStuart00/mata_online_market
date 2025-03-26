@@ -7,10 +7,12 @@ import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.
 import 'package:mata_online_market/core/widgets/text_widgets/small_text_widget.dart';
 
 class ProductContainerWidget extends StatefulWidget {
+  final String discountProductImage;
   final bool onLiked;
   final Function(bool) onLikedChanged;
   const ProductContainerWidget({
     super.key,
+    required this.discountProductImage,
     required this.onLiked,
     required this.onLikedChanged,
   });
@@ -60,12 +62,11 @@ class _ProductContainerWidgetState extends State<ProductContainerWidget> {
           Expanded(
             flex: 2,
             child: Container(
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: AppSpacing.cardRadius,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw'),
+                  image: AssetImage(widget.discountProductImage),
                 ),
               ),
               child: Column(

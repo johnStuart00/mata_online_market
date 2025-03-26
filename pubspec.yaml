@@ -97,6 +97,8 @@ flutter:
     - assets/images/
     - assets/lottie/
     - assets/logo/
+    - assets/images/category_images/
+    - assets/images/new_product/
 
 
   # An image asset can refer to one or more resolution-specific "variants", see

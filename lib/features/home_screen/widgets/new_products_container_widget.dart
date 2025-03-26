@@ -5,10 +5,13 @@ import 'package:mata_online_market/core/widgets/icon_container_widget.dart';
 import 'package:mata_online_market/core/widgets/text_widgets/middle_text_widget.dart';
 
 class NewProductsWidget extends StatefulWidget {
+  // ignore: prefer_typing_uninitialized_variables
+  final String newProductImage;
   final bool onliked;
   final Function(bool) onLikedChanged;
   const NewProductsWidget({
     super.key,
+    required this.newProductImage,
     required this.onliked,
     required this.onLikedChanged,
   });
@@ -48,12 +51,13 @@ class _NewProductsWidgetState extends State<NewProductsWidget> {
             flex: 1,
             child: Container(
               height: 190,
-              decoration: const BoxDecoration(
+              decoration: BoxDecoration(
                 borderRadius: AppSpacing.cardRadius,
                 image: DecorationImage(
                   fit: BoxFit.cover,
-                  image: NetworkImage(
-                      'https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw'),
+                  image: AssetImage(
+                    widget.newProductImage,
+                  ),
                 ),
               ),
             ),

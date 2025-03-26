@@ -47,6 +47,16 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
     });
   }
 
+  List<String> newProductImages = [
+    'assets/images/new_product/1.jpg',
+    'assets/images/new_product/2.jpg',
+    'assets/images/new_product/3.jpg',
+    'assets/images/new_product/4.jpg',
+    'assets/images/new_product/5.jpg',
+    'assets/images/new_product/6.jpg',
+    'assets/images/new_product/7.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -171,13 +181,14 @@ class _ProductViewScreenState extends State<ProductViewScreen> {
                             );
                           },
                           child: ProductContainerWidget(
+                            discountProductImage: newProductImages[index],
                             onLiked: liked,
                             onLikedChanged: _updateLiked,
                           ),
                         ),
                       );
                     },
-                    childCount: 5,
+                    childCount: newProductImages.length,
                   ),
                 ),
               ),

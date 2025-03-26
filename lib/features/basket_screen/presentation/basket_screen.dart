@@ -32,6 +32,16 @@ class _BasketScreenState extends State<BasketScreen> {
     });
   }
 
+  List<String> newProductImages = [
+    'assets/images/new_product/1.jpg',
+    'assets/images/new_product/2.jpg',
+    'assets/images/new_product/3.jpg',
+    'assets/images/new_product/4.jpg',
+    'assets/images/new_product/5.jpg',
+    'assets/images/new_product/6.jpg',
+    'assets/images/new_product/7.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -67,7 +77,8 @@ class _BasketScreenState extends State<BasketScreen> {
                                   Get.toNamed(RouteHelper.productViewScreen);
                                 },
                                 child: BasketContainerWidget(
-                                  imageUrl: 'assets/images/2.jpg',
+                                  imageUrl: newProductImages[
+                                      index % newProductImages.length],
                                   productName: 'Product name',
                                   productDescription: 'Product description',
                                   productPrice: 10.0,
@@ -79,7 +90,7 @@ class _BasketScreenState extends State<BasketScreen> {
                               ),
                             );
                           },
-                          childCount: widget.products.length,
+                          childCount: newProductImages.length,
                         ),
                       ),
                     ),

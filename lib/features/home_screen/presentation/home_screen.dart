@@ -39,6 +39,16 @@ class _HomeScreenState extends State<HomeScreen> {
     });
   }
 
+  List<String> newProductImages = [
+    'assets/images/new_product/1.jpg',
+    'assets/images/new_product/2.jpg',
+    'assets/images/new_product/3.jpg',
+    'assets/images/new_product/4.jpg',
+    'assets/images/new_product/5.jpg',
+    'assets/images/new_product/6.jpg',
+    'assets/images/new_product/7.jpg',
+  ];
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -61,7 +71,7 @@ class _HomeScreenState extends State<HomeScreen> {
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
           //Search field end
           //Category field start
-          const SliverToBoxAdapter(
+          SliverToBoxAdapter(
             child: _CategoryField(),
           ),
           const SliverToBoxAdapter(child: SizedBox(height: 10)),
@@ -114,7 +124,7 @@ class _HomeScreenState extends State<HomeScreen> {
                       height: 250,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
-                        itemCount: 10,
+                        itemCount: newProductImages.length,
                         itemBuilder: (context, index) {
                           return Padding(
                             padding: AppSpacing.smallPadding,
@@ -123,6 +133,7 @@ class _HomeScreenState extends State<HomeScreen> {
                                 Get.toNamed(RouteHelper.productViewScreen);
                               },
                               child: ProductContainerWidget(
+                                discountProductImage: newProductImages[index],
                                 onLiked: productliked,
                                 onLikedChanged: _updateProductLiked,
                               ),
@@ -173,7 +184,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     height: 200,
                     child: ListView.builder(
                       scrollDirection: Axis.horizontal,
-                      itemCount: 10,
+                      itemCount: newProductImages.length,
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: AppSpacing.smallPadding,
@@ -182,6 +193,7 @@ class _HomeScreenState extends State<HomeScreen> {
                               Get.toNamed(RouteHelper.productViewScreen);
                             },
                             child: NewProductsWidget(
+                              newProductImage: newProductImages[index],
                               onliked: newProductliked,
                               onLikedChanged: _updateNewProductLiked,
                             ),
@@ -292,13 +304,14 @@ class _HomeScreenState extends State<HomeScreen> {
                         Get.toNamed(RouteHelper.productViewScreen);
                       },
                       child: ProductContainerWidget(
+                        discountProductImage: newProductImages[index],
                         onLiked: productliked,
                         onLikedChanged: _updateProductLiked,
                       ),
                     ),
                   );
                 },
-                childCount: 50,
+                childCount: newProductImages.length,
               ),
             ),
           ),
@@ -337,8 +350,23 @@ class _BannerField extends StatelessWidget {
   }
 }
 
+// ignore: must_be_immutable
 class _CategoryField extends StatelessWidget {
-  const _CategoryField();
+  List<String> categoryName = [
+    'Ýeňil matalar',
+    'Gyş matalar',
+    'Jalbar mata',
+    'Gyz mata',
+    'Erkek mata',
+  ];
+
+  List<String> categoryPhotos = [
+    'assets/images/category_images/1.jpg',
+    'assets/images/category_images/2.jpg',
+    'assets/images/category_images/3.jpg',
+    'assets/images/category_images/4.jpg',
+    'assets/images/category_images/5.jpg',
+  ];
 
   @override
   Widget build(BuildContext context) {
@@ -368,16 +396,15 @@ class _CategoryField extends StatelessWidget {
             height: 90,
             child: ListView.builder(
               scrollDirection: Axis.horizontal,
-              itemCount: 10,
+              itemCount: categoryName.length,
               itemBuilder: (context, index) {
                 return GestureDetector(
                   onTap: () {
                     Get.toNamed(RouteHelper.categoryViewScreen);
                   },
                   child: CircleContainerWidget(
-                    imageUrl:
-                        "https://play-lh.googleusercontent.com/bttPbG01UOVce0e_dSzULi-UoT3jNADmKtKKQnKk7zIoJufnqXkwDzOyfppm3kZUTw=w240-h480-rw",
-                    categoryName: "Category $index",
+                    imageUrl: categoryPhotos[index],
+                    categoryName: categoryName[index],
                   ),
                 );
               },
